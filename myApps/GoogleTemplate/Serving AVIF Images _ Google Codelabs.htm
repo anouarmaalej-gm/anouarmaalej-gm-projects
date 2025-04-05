@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="google-signin-client-id" content="721724668570-nbkv1cfusk7kk4eni4pjvepaus73b13t.apps.googleusercontent.com">
+    <meta name="google-signin-scope" content="profile email https://www.googleapis.com/auth/developerprofiles https://www.googleapis.com/auth/developerprofiles.award">
+    <meta property="og:site_name" content="Google Codelabs">
+    <meta property="og:type" content="website"><meta name="theme-color" content="#1a73e8"><meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="manifest" href="https://codelabs.developers.google.com/_pwa/codelabs/manifest.json" crossorigin="use-credentials">
+    <link rel="preconnect" href="https://www.gstatic.com/" crossorigin="">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="">
+    <link rel="preconnect" href="https://apis.google.com/" crossorigin="">
+    <link rel="preconnect" href="https://www.google-analytics.com/" crossorigin="">
+    <link rel="stylesheet" href="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/css.css">
+      <link rel="stylesheet" href="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/css2.css"><link rel="stylesheet" href="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/app.css">
+      <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/prod/vbddb2c68c6e27c8062b052e877e6ccde82ab61ee731962a34dca560b12d02759/codelabs/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/prod/vbddb2c68c6e27c8062b052e877e6ccde82ab61ee731962a34dca560b12d02759/codelabs/images/touchicon-180.png"><link rel="canonical" href="https://codelabs.developers.google.com/codelabs/avif"><link rel="search" type="application/opensearchdescription+xml" title="Google Codelabs" href="https://codelabs.developers.google.com/s/opensearch.xml">
+      <link rel="alternate" hreflang="en" href="https://codelabs.developers.google.com/codelabs/avif"><link rel="alternate" hreflang="x-default" href="https://codelabs.developers.google.com/codelabs/avif"><link rel="alternate" hreflang="ar" href="https://codelabs.developers.google.com/codelabs/avif?hl=ar"><link rel="alternate" hreflang="bn" href="https://codelabs.developers.google.com/codelabs/avif?hl=bn"><link rel="alternate" hreflang="zh-Hans" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-cn"><link rel="alternate" hreflang="zh-Hant" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-tw"><link rel="alternate" hreflang="fa" href="https://codelabs.developers.google.com/codelabs/avif?hl=fa"><link rel="alternate" hreflang="fr" href="https://codelabs.developers.google.com/codelabs/avif?hl=fr"><link rel="alternate" hreflang="de" href="https://codelabs.developers.google.com/codelabs/avif?hl=de"><link rel="alternate" hreflang="he" href="https://codelabs.developers.google.com/codelabs/avif?hl=he"><link rel="alternate" hreflang="hi" href="https://codelabs.developers.google.com/codelabs/avif?hl=hi"><link rel="alternate" hreflang="id" href="https://codelabs.developers.google.com/codelabs/avif?hl=id"><link rel="alternate" hreflang="it" href="https://codelabs.developers.google.com/codelabs/avif?hl=it"><link rel="alternate" hreflang="ja" href="https://codelabs.developers.google.com/codelabs/avif?hl=ja"><link rel="alternate" hreflang="ko" href="https://codelabs.developers.google.com/codelabs/avif?hl=ko"><link rel="alternate" hreflang="pl" href="https://codelabs.developers.google.com/codelabs/avif?hl=pl"><link rel="alternate" hreflang="pt-BR" href="https://codelabs.developers.google.com/codelabs/avif?hl=pt-br"><link rel="alternate" hreflang="ru" href="https://codelabs.developers.google.com/codelabs/avif?hl=ru"><link rel="alternate" hreflang="es-419" href="https://codelabs.developers.google.com/codelabs/avif?hl=es-419"><link rel="alternate" hreflang="th" href="https://codelabs.developers.google.com/codelabs/avif?hl=th"><link rel="alternate" hreflang="tr" href="https://codelabs.developers.google.com/codelabs/avif?hl=tr"><link rel="alternate" hreflang="vi" href="https://codelabs.developers.google.com/codelabs/avif?hl=vi"><title>Serving AVIF Images &nbsp;|&nbsp; Google Codelabs</title>
+
+<meta property="og:title" content="Serving AVIF Images &nbsp;|&nbsp; Google Codelabs"><meta property="og:url" content="https://codelabs.developers.google.com/codelabs/avif"><meta property="og:locale" content="en">
+  
+<link rel="stylesheet" href="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/extras.css">
+<script type="text/javascript" async="" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/js" nonce=""></script>
+<script class="all-tenants" async="" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/gtm.js" nonce=""></script>
+<script async="" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/js_002" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_app_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_app_custom_elements_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_header_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_a11y_announce_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_analytics_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_badger_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_book_nav_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_code_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_content_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_cookie_notification_bar_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_footer_linkboxes_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_footer_promos_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_footer_utility_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_heading_link_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_language_selector_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_notification_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_panel_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_progress_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_recommendations_sidebar_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_search_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_sitemask_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_snackbar_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_toc_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_tooltip_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_user_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_google_codelab_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_google_codelab_about_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_google_codelab_analytics_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_google_codelab_step_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_badge_awarded_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/analytics.js"></script><script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_spinner_module.js" nonce=""></script>
+<script src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/devsite_devsite_mwc_module.js" nonce=""></script>
+<style type="text/css"></style>
+<style type="text/css"></style>
+
+</head>
+
+<body class="viewport--desktop tenant--codelabs" template="codelab" theme="codelabs-theme" type="codelab" layout="docs" display-toc="" style="--devsite-panel-height: 0px; --devsite-js-header-height: 0px;" ready="" codelabs-content-type="paginated">
+
+    <devsite-progress id="app-progress"></devsite-progress>
+    <a href="#main-content" class="skip-link button">Skip to main content</a>
+    
+    <section class="devsite-wrapper">
+      <!-- anouar: COOKIES -->
+<!--       <devsite-cookie-notification-bar>
+        <div class="glue-cookie-notification-bar" id="glue-cookie-notification-bar-1" aria-labelledby="glue-cookie-notification-bar-1-label" role="region" data-nosnippet="" tabindex="-1" style="font-size: 1rem;" aria-hidden="true" inert="true"><p class="glue-cookie-notification-bar__text">
+          <span id="glue-cookie-notification-bar-1-label">codelabs.developers.google.com  uses cookies to deliver and enhance the quality of its services and to analyze traffic. If you agree, cookies are also used to serve advertising and to personalize the content and advertisements that you see. </span>
+          <a href="https://policies.google.com/technologies/cookies?hl=en" class="glue-cookie-notification-bar__more" rel="noopener" aria-describedby="glue-cookie-notification-bar-1-label" target="_blank" aria-label="Learn more about how Google uses cookies. Opens in a new tab.">Learn more</a>.</p><button class="glue-cookie-notification-bar__accept">Agree</button>
+          <button class="glue-cookie-notification-bar__reject">No thanks</button>
+        </div>
+
+      </devsite-cookie-notification-bar>-->
+      
+<devsite-header role="banner" fixed="" no-lower-row="" top-row--height="0" bottom-row--height="0" bottom-tabs--height="0" style="--devsite-js-top-row--height: 0px; --devsite-js-bottom-row--height: 0px; --devsite-js-bottom-tabs--height: 0px;" bottom-row--hidden="">
+
+
+  <div class="devsite-header--inner" data-nosnippet="">
+    <div class="devsite-top-logo-row-wrapper-wrapper">
+        <div class="devsite-top-logo-row-wrapper">
+          <div class="devsite-top-logo-row">
+                          <button type="button" id="devsite-hamburger-menu" class="devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Navigation menu button" visually-hidden="" aria-label="Open menu">
+                          </button>
+                          <div class="devsite-product-name-wrapper">
+
+                    <a href="https://codelabs.developers.google.com/" class="devsite-site-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Site logo" track-type="globalNav" track-name="googleCodelabs" track-metadata-position="nav" track-metadata-eventdetail="nav">
+                    
+                    <picture>
+                      
+                      <img src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/lockup.svg" class="devsite-site-logo" alt="Google Codelabs">
+                    </picture>
+                    
+                  </a>
+
+
+
+                  </div>
+          <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs"></div>
+
+          <!-- anouar: SEARCH  -->
+          
+<!--             <devsite-search enable-signin="" enable-search="" enable-suggestions="" enable-query-completion="" tenant-name="Google Codelabs">
+              <form class="devsite-search-form" action="https://codelabs.developers.google.com/s/results" method="GET">
+                <div class="devsite-search-container">
+                  <button type="button" search-open="" class="devsite-search-button devsite-header-icon-button button-flat material-icons" aria-label="Open search"></button>
+                  <div class="devsite-searchbox">
+                    <input aria-activedescendant="" aria-autocomplete="list" aria-label="Search" aria-expanded="false" aria-haspopup="listbox" autocomplete="off" class="devsite-search-field devsite-search-query" name="q" placeholder="Search" role="combobox" type="text" aria-controls="devsite-search-popout-container-id-1">
+                      <div class="devsite-search-image material-icons" aria-hidden="true">
+                        
+                      </div>
+                      <div class="devsite-search-shortcut-icon-container" aria-hidden="true">
+                        <kbd class="devsite-search-shortcut-icon">/</kbd>
+                      </div>
+                  </div>
+                </div>
+              <div class="devsite-popout" id="devsite-search-popout-container-id-1"><div class="devsite-popout-result devsite-suggest-results-container" devsite-hide=""></div></div></form>
+              <button type="button" search-close="" class="devsite-search-button devsite-header-icon-button button-flat material-icons" aria-label="Close search"></button>
+            </devsite-search> 
+            <div class="devsite-search-background" style="opacity: 1;"></div>
+            
+            -->
+          </div>
+
+        
+<!-- anouar: LANGUAGE SELECTOR -->     
+
+<!-- <devsite-language-selector aria-label="Select your language preference.">
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en" href="https://codelabs.developers.google.com/codelabs/avif#0" aria-current="true">English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="de" href="https://codelabs.developers.google.com/codelabs/avif?hl=de#0">Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es" href="https://codelabs.developers.google.com/codelabs/avif?hl=es#0">Español</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es-419" href="https://codelabs.developers.google.com/codelabs/avif?hl=es-419#0">Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fr" href="https://codelabs.developers.google.com/codelabs/avif?hl=fr#0">Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id" href="https://codelabs.developers.google.com/codelabs/avif?hl=id#0">Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="it" href="https://codelabs.developers.google.com/codelabs/avif?hl=it#0">Italiano</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pl" href="https://codelabs.developers.google.com/codelabs/avif?hl=pl#0">Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt-br" href="https://codelabs.developers.google.com/codelabs/avif?hl=pt-br#0">Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="vi" href="https://codelabs.developers.google.com/codelabs/avif?hl=vi#0">Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="tr" href="https://codelabs.developers.google.com/codelabs/avif?hl=tr#0">Türkçe</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ru" href="https://codelabs.developers.google.com/codelabs/avif?hl=ru#0">Русский</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="he" href="https://codelabs.developers.google.com/codelabs/avif?hl=he#0">עברית</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ar" href="https://codelabs.developers.google.com/codelabs/avif?hl=ar#0">العربيّة</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fa" href="https://codelabs.developers.google.com/codelabs/avif?hl=fa#0">فارسی</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="hi" href="https://codelabs.developers.google.com/codelabs/avif?hl=hi#0">हिंदी</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="bn" href="https://codelabs.developers.google.com/codelabs/avif?hl=bn#0">বাংলা</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="th" href="https://codelabs.developers.google.com/codelabs/avif?hl=th#0">ภาษาไทย</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh-cn" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-cn#0">中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh-tw" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-tw#0">中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja" href="https://codelabs.developers.google.com/codelabs/avif?hl=ja#0">日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko" href="https://codelabs.developers.google.com/codelabs/avif?hl=ko#0">한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector> -->
+
+
+          
+
+<!-- anouar: USER -->        
+
+        
+<!-- <devsite-user enable-profiles="" fp-auth="" id="devsite-user" sign-in-url="https://codelabs.developers.google.com/_d/signin?continue=https%3A%2F%2Fcodelabs.developers.google.com%2Fcodelabs%2Favif%230&amp;prompt=select_account" sign-out-url="https://codelabs.developers.google.com/_d/signout?continue=https%3A%2F%2Fcodelabs.developers.google.com%2Fcodelabs%2Favif%230" url="https://codelabs.developers.google.com/_d/signout?continue=https%3A%2F%2Fcodelabs.developers.google.com%2Fcodelabs%2Favif%230">
+  <div class="ogb-wrapper ogb-si">
+    <a href="https://codelabs.developers.google.com/_d/signin?continue=https%3A%2F%2Fcodelabs.developers.google.com%2Fcodelabs%2Favif%230&amp;prompt=select_account" id="devsite-signin-btn" class="devsite-user-signin button devsite-top-button" track-type="globalNav" track-name="signIn" track-metadata-eventdetail="nav" track-metadata-position="nav">Sign in
+    </a>
+  </div>
+</devsite-user> -->
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</devsite-header>
+
+
+<div class="devsite-book-nav-bg" hidden="" fixed=""></div>
+
+<devsite-book-nav scrollbars="" hidden="" fixed="" style="--devsite-book-nav-max-height: 927px; top: 0px;" top-level-nav="">
+
+<div class="devsite-book-nav-filter" hidden="">
+  <span class="filter-list-icon material-icons" aria-hidden="true"></span>
+  <input type="text" placeholder="Filter" aria-label="Type to filter" role="searchbox">  
+  <span class="filter-clear-button hidden" data-title="Clear filter" aria-label="Clear filter" role="button" tabindex="0"></span>
+</div>
+
+<!-- <nav class="devsite-book-nav devsite-nav nocontent" aria-label="Side menu">
+  <div class="devsite-mobile-header">
+    <button type="button" id="devsite-close-nav" class="devsite-header-icon-button button-flat material-icons gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Close navigation" aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+
+  <a href="https://codelabs.developers.google.com/" class="devsite-site-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Site logo" track-type="globalNav" track-name="googleCodelabs" track-metadata-position="nav" track-metadata-eventdetail="nav"></a>
+</div>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+      <ul class="devsite-nav-list">
+      
+      </ul>
+    </div>
+    
+  </div>
+</nav> -->
+</devsite-book-nav>
+
+
+<div class="devsite-book-nav-blur" hidden="" fixed="" style="--devsite-js-book-nav-scrollbar-width: 0px;"></div>
+<button class="devsite-book-nav-toggle" aria-haspopup="menu" hidden="" fixed="" aria-label="Hide side navigation" data-title="Hide side navigation" aria-expanded="true"><span class="material-icons devsite-book-nav-toggle-icon"></span></button>
+
+<section id="gc-wrapper" style="margin-top: 0px;">
+  <main role="main" id="main-content" class="devsite-main-content" has-sidebar="">
+    <div class="devsite-sidebar" fixed="" style="--devsite-js-sidebar-max-height: 879px; --devsite-js-sidebar-offset: 0; --devsite-js-sidebar-max-width: 443.5px;">
+            
+      <div class="devsite-sidebar-content">
+        <devsite-toc class="devsite-nav devsite-toc" role="navigation" aria-label="On this page" depth="1" scrollbars="" visible="">
+          <ul class="devsite-nav-list">
+            
+            <li class="devsite-nav-item devsite-nav-heading devsite-toc-toggle">
+              <span class="devsite-nav-title" role="heading" aria-level="2">
+                <span class="devsite-nav-text">On this page</span>
+              </span>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#0" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="0" track-type="navigation" track-name="rightNav" track-metadata-position="0" track-metadata-link-destination="#0">
+              <span class="devsite-nav-text" tooltip="">Introductions</span></a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#what-is-avif" class="devsite-nav-title gc-analytics-event devsite-nav-active" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="1" track-type="navigation" track-name="rightNav" track-metadata-position="1" track-metadata-link-destination="#what-is-avif">
+              <span class="devsite-nav-text" tooltip="">What is AVIF?</span>
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#why-avif" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="2" track-type="navigation" track-name="rightNav" track-metadata-position="2" track-metadata-link-destination="#why-avif">
+                <span class="devsite-nav-text" tooltip="">Why AVIF?</span>
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#what-you-will-learn" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="3" track-type="navigation" track-name="rightNav" track-metadata-position="3" track-metadata-link-destination="#what-you-will-learn">
+                <span class="devsite-nav-text" tooltip="">What you will learn</span>
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#what-youll-need" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="4" track-type="navigation" track-name="rightNav" track-metadata-position="4" track-metadata-link-destination="#what-youll-need">
+                <span class="devsite-nav-text" tooltip="">What you'll need</span>
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#1" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="5" track-type="navigation" track-name="rightNav" track-metadata-position="5" track-metadata-link-destination="#1">
+                <span class="devsite-nav-text" tooltip="">Creating AVIF images with Squoosh</span>
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#2" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="6" track-type="navigation" track-name="rightNav" track-metadata-position="6" track-metadata-link-destination="#2">
+                <span class="devsite-nav-text" tooltip="">Building command line encoder avifenc</span>
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#3" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="7" track-type="navigation" track-name="rightNav" track-metadata-position="7" track-metadata-link-destination="#3">
+                <span class="devsite-nav-text" tooltip="">Creating AVIF images with avifenc</span>
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#4" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="8" track-type="navigation" track-name="rightNav" track-metadata-position="8" track-metadata-link-destination="#4">
+                <span class="devsite-nav-text" tooltip="">4. Render AVIF images in a web page.</span>
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#5" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="9" track-type="navigation" track-name="rightNav" track-metadata-position="9" track-metadata-link-destination="#5">
+                <span class="devsite-nav-text" tooltip="">Creating animated AVIF images with FFmpeg</span>
+              </a>
+            
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#6" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="10" track-type="navigation" track-name="rightNav" track-metadata-position="10" track-metadata-link-destination="#6">
+                <span class="devsite-nav-text" tooltip="">Creating animated AVIF images with avifenc</span>
+              </a>
+            </li>
+            
+            <li class="devsite-nav-item">
+              <a href="#7" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Right nav" data-value="11" track-type="navigation" track-name="rightNav" track-metadata-position="11" track-metadata-link-destination="#7">
+                <span class="devsite-nav-text" tooltip="">Congratulations!</span>
+              </a>
+            </li>
+          
+          </ul>
+        </devsite-toc>
+        <devsite-recommendations-sidebar class="nocontent devsite-nav"></devsite-recommendations-sidebar>
+      </div>
+    </div>
+          
+<devsite-content>
+
+<article class="devsite-article">
+  <style>
+      body {
+        transition: opacity ease-in 0.2s;
+      }
+
+      body[unresolved] {
+        opacity: 0;
+        display: block;
+        overflow: hidden;
+        position: relative;
+      } 
+  </style>
+
+
+<!-- anouar: I think this sets all the bookmarks in the page -->
+<div class="devsite-article-meta nocontent" role="navigation">
+  <ul class="devsite-breadcrumb-list"></ul>
+</div>
+
+<h1 class="devsite-page-title" tabindex="-1">Serving AVIF Images<div class="devsite-actions" data-nosnippet=""></div></h1>
+
+<devsite-toc class="devsite-nav devsite-toc-embedded" depth="1" devsite-toc-embedded="" expandable="" visible="">
+    <ul class="devsite-nav-list">
+
+      <li class="devsite-nav-item devsite-nav-heading devsite-toc-toggle">
+        <span class="devsite-nav-title" role="heading" aria-level="2">
+          <span class="devsite-nav-text">On this page</span>
+        </span>
+        <button type="button" title="Expand/collapse contents" class="devsite-nav-show-all button-transparent material-icons"></button>
+      </li>
+      
+      <li class="devsite-nav-item" visible="">
+        <a href="#0" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="0" track-type="navigation" track-name="embeddedNav" track-metadata-position="0" track-metadata-link-destination="#0">
+        <span class="devsite-nav-text" tooltip="">Introduction</span>
+        </a>
+      </li>
+    
+      <li class="devsite-nav-item" visible="">
+        <a href="#what-is-avif" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="1" track-type="navigation" track-name="embeddedNav" track-metadata-position="1" track-metadata-link-destination="#what-is-avif">
+          <!-- anouar: NOTICE the bookmark -->
+          <span class="devsite-nav-text" tooltip="">What is AVIF?</span>
+        </a>
+      </li>
+      
+      <li class="devsite-nav-item" visible="">
+        <a href="#why-avif" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="2" track-type="navigation" track-name="embeddedNav" track-metadata-position="2" track-metadata-link-destination="#why-avif">
+          <span class="devsite-nav-text" tooltip="">Why AVIF?</span>
+        </a>
+      </li>
+      
+      <li class="devsite-nav-item" visible="">
+        <a href="#what-you-will-learn" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="3" track-type="navigation" track-name="embeddedNav" track-metadata-position="3" track-metadata-link-destination="#what-you-will-learn">
+          <span class="devsite-nav-text" tooltip="">What you will learn</span>
+        </a>
+      </li>
+      
+      <li class="devsite-nav-item" visible="">
+            <a href="#what-youll-need" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="4" track-type="navigation" track-name="embeddedNav" track-metadata-position="4" track-metadata-link-destination="#what-youll-need">
+              <span class="devsite-nav-text" tooltip="">What you'll need</span>
+            </a>
+      </li>
+      
+      <li class="devsite-nav-item">
+        <a href="#1" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="5" track-type="navigation" track-name="embeddedNav" track-metadata-position="5" track-metadata-link-destination="#1">
+          <span class="devsite-nav-text" tooltip="">Creating AVIF images with Squoosh</span>
+        </a>
+      </li>
+      
+      <li class="devsite-nav-item">
+        <a href="#2" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="6" track-type="navigation" track-name="embeddedNav" track-metadata-position="6" track-metadata-link-destination="#2">
+          <span class="devsite-nav-text" tooltip="">Building command line encoder avifenc</span>
+        </a>
+      </li>
+      
+      <li class="devsite-nav-item">
+        <a href="#3" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="7" track-type="navigation" track-name="embeddedNav" track-metadata-position="7" track-metadata-link-destination="#3">
+          <span class="devsite-nav-text" tooltip="">Creating AVIF images with avifenc</span>
+        </a>
+      </li>
+      
+      <li class="devsite-nav-item">
+        <a href="#4" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="8" track-type="navigation" track-name="embeddedNav" track-metadata-position="8" track-metadata-link-destination="#4">
+          <span class="devsite-nav-text" tooltip="">Render AVIF images in a web page.</span>
+        </a>
+      </li>
+      
+      <li class="devsite-nav-item">
+        <a href="#5" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="9" track-type="navigation" track-name="embeddedNav" track-metadata-position="9" track-metadata-link-destination="#5">
+          <span class="devsite-nav-text" tooltip="">Creating animated AVIF images with FFmpeg</span>
+        </a>
+      </li>
+      
+      <li class="devsite-nav-item">
+        <a href="#6" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="10" track-type="navigation" track-name="embeddedNav" track-metadata-position="10" track-metadata-link-destination="#6">
+          <span class="devsite-nav-text" tooltip="">Creating animated AVIF images with avifenc</span>
+        </a>
+      </li>
+      
+      <li class="devsite-nav-item">
+        <a href="#7" class="devsite-nav-title gc-analytics-event" data-category="Site-Wide Custom Events" data-action="click" data-label="Embedded nav" data-value="11" track-type="navigation" track-name="embeddedNav" track-metadata-position="11" track-metadata-link-destination="#7">
+          <span class="devsite-nav-text" tooltip="">Congratulations!</span>
+        </a>
+      </li>
+      
+      <li class="devsite-toc-toggle">
+        <button type="button" class="button-flat devsite-nav-more-items material-icons" track-type="navigation" track-name="embeddedNavExpand" title="Expand/collapse contents"></button>
+      </li>
+    
+    </ul>
+  
+  </devsite-toc>
+<!-- anouar: I think this finishes the bookmarks in the page -->
+
+
+
+<!-- anouar: START div class="devsite-article-body clearfix" -->
+
+<div class="devsite-article-body clearfix">
+
+      <google-codelab-analytics gaid="UA-49880327-14" ga4id="G-JTFZSJVVVZ" codelab-id="avif" environment="web" category="web,images,opensource,imagecompression"></google-codelab-analytics>
+      <google-codelab codelab-gaid="" codelab-ga4id="" doc-id="" id="avif" no-tooltip="" environment="web" category="web,images,opensource,imagecompression" feedback-link="" layout="paginated" data-title="Serving AVIF Images" selected="0" google-codelab-ready="" anayltics-ready="anayltics-ready">
+        <div id="codelab-title">
+          <div id="codelab-nav-buttons">
+            <a href="https://codelabs.developers.google.com/" id="arrow-back" class="no-return-url">
+              <i class="material-icons">close</i>
+            </a>
+            <a href="#" id="menu">
+              <i class="material-icons">menu</i>
+            </a>
+          </div>
+        <div class="codelab-time-container" style="display: none;"></div>
+
+            <!-- ************************************************************* -->
+            <!-- SELECT LANGUAGE -->
+            <!-- ************************************************************* -->
+                  
+            <!--  <devsite-language-selector aria-label="Select your language preference.">
+              
+                  <ul role="presentation">
+                
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="en" href="https://codelabs.developers.google.com/codelabs/avif#0" aria-current="true">English</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="de" href="https://codelabs.developers.google.com/codelabs/avif?hl=de#0">Deutsch</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="es" href="https://codelabs.developers.google.com/codelabs/avif?hl=es#0">Español</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="es-419" href="https://codelabs.developers.google.com/codelabs/avif?hl=es-419#0">Español – América Latina</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="fr" href="https://codelabs.developers.google.com/codelabs/avif?hl=fr#0">Français</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="id" href="https://codelabs.developers.google.com/codelabs/avif?hl=id#0">Indonesia</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="it" href="https://codelabs.developers.google.com/codelabs/avif?hl=it#0">Italiano</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="pl" href="https://codelabs.developers.google.com/codelabs/avif?hl=pl#0">Polski</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="pt-br" href="https://codelabs.developers.google.com/codelabs/avif?hl=pt-br#0">Português – Brasil</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="vi" href="https://codelabs.developers.google.com/codelabs/avif?hl=vi#0">Tiếng Việt</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="tr" href="https://codelabs.developers.google.com/codelabs/avif?hl=tr#0">Türkçe</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="ru" href="https://codelabs.developers.google.com/codelabs/avif?hl=ru#0">Русский</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="he" href="https://codelabs.developers.google.com/codelabs/avif?hl=he#0">עברית</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="ar" href="https://codelabs.developers.google.com/codelabs/avif?hl=ar#0">العربيّة</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="fa" href="https://codelabs.developers.google.com/codelabs/avif?hl=fa#0">فارسی</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="hi" href="https://codelabs.developers.google.com/codelabs/avif?hl=hi#0">हिंदी</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="bn" href="https://codelabs.developers.google.com/codelabs/avif?hl=bn#0">বাংলা</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="th" href="https://codelabs.developers.google.com/codelabs/avif?hl=th#0">ภาษาไทย</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="zh-cn" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-cn#0">中文 – 简体</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="zh-tw" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-tw#0">中文 – 繁體</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="ja" href="https://codelabs.developers.google.com/codelabs/avif?hl=ja#0">日本語</a>
+                </li>
+                
+                <li role="presentation">
+                  <a role="menuitem" lang="ko" href="https://codelabs.developers.google.com/codelabs/avif?hl=ko#0">한국어</a>
+                </li>
+                
+              </ul>
+            </devsite-language-selector>  -->
+
+
+            <!-- ************************************************************* -->
+            <!-- SIGN IN -->
+            <!-- ************************************************************* -->
+
+<!--       <devsite-user enable-profiles="" fp-auth="" sign-in-url="https://codelabs.developers.google.com/_d/signin?continue=https%3A%2F%2Fcodelabs.developers.google.com%2Fcodelabs%2Favif%230&amp;prompt=select_account" sign-out-url="https://codelabs.developers.google.com/_d/signout?continue=https%3A%2F%2Fcodelabs.developers.google.com%2Fcodelabs%2Favif%230" url="https://codelabs.developers.google.com/_d/signout?continue=https%3A%2F%2Fcodelabs.developers.google.com%2Fcodelabs%2Favif%230">
+        <div class="ogb-wrapper ogb-si">
+          <a href="https://codelabs.developers.google.com/_d/signin?continue=https%3A%2F%2Fcodelabs.developers.google.com%2Fcodelabs%2Favif%230&amp;prompt=select_account" id="devsite-signin-btn" class="devsite-user-signin button devsite-top-button" track-type="globalNav" track-name="signIn" track-metadata-eventdetail="nav" track-metadata-position="nav">Sign in</a>
+      </div>
+      </devsite-user> -->
+
+  </div>
+
+<!-- ************************************************************* -->
+<!-- LEFT MENU                                                    -->
+<!-- ************************************************************* -->
+
+  <nav id="drawer">
+    <div class="codelab-time-container" style="display: none;"></div>
+    <div class="steps">
+      <ol>
+        <li completed="" selected=""><a href="#0"><span class="step"><span>Introduction</span></span></a></li>
+        <li><a href="#1"><span class="step"><span>Creating AVIF images with Squoosh</span></span></a></li>
+        <li><a href="#2"><span class="step"><span>Building command line encoder avifenc</span></span></a></li>
+        <li><a href="#3"><span class="step"><span>Creating AVIF images with avifenc</span></span></a></li>
+        <li><a href="#4"><span class="step"><span>Render AVIF images in a web page.</span></span></a></li>
+        <li><a href="#5"><span class="step"><span>Creating animated AVIF images with FFmpeg</span></span></a></li>
+        <li><a href="#6"><span class="step"><span>Creating animated AVIF images with avifenc</span></span></a></li>
+        <li><a href="#7"><span class="step"><span>Congratulations!</span></span></a></li>
+      </ol>
+    </div>
+  </nav>
+
+
+<!-- ************************************************************* -->
+<!-- LEFT MENU  END                                                  -->
+<!-- ************************************************************* -->
+
+  <div id="main">
+    <div id="steps">
+      <google-codelab-step label="Introduction" duration="0" step="0" tabindex="-1" selected="">
+
+        <!-- anouar: Title & first card  -->    
+        
+            <google-codelab-about codelab-title="Serving AVIF Images" last-updated="2025-02-24T17:43:01Z">
+          
+            <!-- anouar: Title  -->      
+                  <div class="codelab-title">
+                    <div class="token">This is the title of the book, formerly: Serving AVIF Images</div>
+                  </div>
+            <!-- anouar: first card  -->    
+                  <div class="about-card"><h2 class="title">About this codelab</h2>
+                    <div class="last-updated"><i class="material-icons">subject</i>Last updated Feb 24, 2025</div>
+                    <div class="authors"><i class="material-icons">account_circle</i>Written by: Change this to whoever</div>
+                  </div>
+            </google-codelab-about>
+        
+        
+      <div class="instructions">
+        <div class="inner">
+          
+            <h2 is-upgraded="" class="step-title">
+              <a href="#0">1. This is the first page's introduction</a>
+            </h2>
+              <p>Images account for <a href="https://developers.google.com/web/fundamentals/design-and-ux/responsive/images" target="_blank">more than 60%</a> of the bytes on average needed to load a web page. Using AVIF you can make your images smaller and make your website load faster.</p>
+            <!-- anouar: first title  -->
+            
+            <h2 is-upgraded="" id="what-is-avif" data-text="What is AVIF?" tabindex="-1" role="presentation">
+              <span class="devsite-heading" role="heading" aria-level="2">What is AVIF?</span>
+            </h2>
+            <!-- anouar: first paragraph  -->
+              <p>AVIF is an image format derived from the AV1 video bitream. AVIF was built for compression efficiency.</p>
+          
+            <h2 is-upgraded="" id="why-avif" data-text="Why AVIF?" tabindex="-1" role="presentation"><span class="devsite-heading" role="heading" aria-level="2">Why AVIF?</span>
+            <button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copy link to this section: Why AVIF?" data-title="Copy link to this section: Why AVIF?" data-id="why-avif"></button>
+            </h2>
+              <p>AVIF images are much smaller than JPEG, PNG, GIF, or WebP images with the same or better quality.</p>
+          
+            <h2 is-upgraded="" id="what-you-will-learn" data-text="What you will learn" tabindex="-1" role="presentation">
+              <span class="devsite-heading" role="heading" aria-level="2">What you will learn</span>
+              <button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copy link to this section: What you will learn" data-title="Copy link to this section: What you will learn" data-id="what-you-will-learn"></button>
+            </h2>
+                <ul>
+                <li>How to create AVIF images from your images</li>
+                <li>How to render AVIF images in a web page</li>
+                </ul>
+            <h2 is-upgraded="" id="what-youll-need" data-text="What you'll need" tabindex="-1" role="presentation">
+              <span class="devsite-heading" role="heading" aria-level="2">What you'll need</span>
+              <button type="button" class="devsite-heading-link button-flat material-icons" aria-label="Copy link to this section: What you'll need" data-title="Copy link to this section: What you'll need" data-id="what-youll-need">               
+              </button>
+            </h2>
+
+            <p>To complete this codelab you will need the following:</p>
+              <ul>
+                <li>Any major browser.</li>
+                <li>A text editor</li>
+                <li>
+                  <a href="https://cmake.org/" target="_blank">cmake</a>
+                </li>
+                <li>
+                  <a href="https://git-scm.com/" target="_blank">git</a>
+                </li>
+                <li>
+                  <a href="https://ninja-build.org/" target="_blank">ninja</a>
+                </li>
+                <li>An image. I provided one 
+                  <a href="https://codelabs.developers.google.com/static/codelabs/avif/images/happy_dog.jpg" target="_blank">here</a>
+                </li>
+                <li><a href="https://ffmpeg.org/" target="_blank">FFmpeg</a></li>
+              </ul>
+
+
+          </div>
+        </div>
+
+
+        
+      </google-codelab-step><google-codelab-step label="Creating AVIF images with Squoosh" duration="0" step="1" tabindex="-1">
+        
+      
+        <div class="instructions">
+          <div class="inner">
+            <h2 is-upgraded="" class="step-title">
+              <a href="#1">2. Creating AVIF images with Squoosh</a>
+            </h2>
+            
+            
+            <p>Squoosh is an image compression web app. With squoosh you can easily compress your images into AVIF images.</p>
+  <ol type="1">
+  <li>Open <a href="https://squoosh.app/" target="_blank">https://squoosh.app</a></li>
+  <li>Drop a local image onto Squoosh.</li>
+  </ol>
+  <p class="image-container"><img alt="Squoosh screenshot" style="width: 430.00px" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/avif_codelab_01_squoosh_page.png"></p>
+  <ol type="1" start="3">
+  <li>Choose AVIF from the Compress drop-down box.</li>
+  </ol>
+  <p class="image-container"><img alt="Squoosh drop-down box" style="width: 303.00px" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/avif_codelab_02_squoosh_avif_dropdown.png"></p>
+  <p>Squoosh will then compress your image to an AVIF image. Once Squoosh 
+  is done it will show a download button with some statistics on the AVIF 
+  image in the bottom right corner.</p>
+  <p class="image-container"><img alt="Squoosh download button" style="width: 261.00px" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/avif_codelab_03_squoosh_download.png"></p>
+  <p>The original sample image was 3340 kB and the compressed image is 378
+  kB. The sample image was compressed almost 10x smaller than the 
+  original image!</p>
+  <ol type="1" start="4">
+  <li>Download the AVIF image</li>
+  </ol>
+  <p>Click the download button and the AVIF image will be saved to your local drive.</p>
+  <aside class="special"><p> You can view your AVIF image by dragging the image onto Chrome.</p>
+  </aside>
+  <p>You now have your very own AVIF image!</p>
+
+
+          </div></div></google-codelab-step><google-codelab-step label="Building command line encoder avifenc" duration="0" step="2" tabindex="-1">
+            
+            
+            <div class="instructions">
+              <div class="inner"><h2 is-upgraded="" class="step-title"><a href="#2">3. Building command line encoder avifenc</a></h2>
+                <p>avifenc is a command line application that can convert PNG 
+                    and JPEG images to AVIF images. avifenc uses libavif, which is a library
+                    that can decode and encode AVIF images. If you have a lot of images you
+                    want to convert to AVIF then using the command line encoder, avifenc, 
+                    is probably a good choice.</p>
+              <aside class="special"><p> Chrome uses libavif to render AVIF images.</p></aside>
+            <!--  -->
+            <ol type="1"> <li>Get the code.</li> </ol>
+            <div></div>
+            <devsite-code data-copy-event-label="">
+              <pre class="" translate="no" dir="ltr" is-upgraded="" syntax="Text only">
+                <code translate="no" dir="ltr">
+                  <span class="pln">git clone https</span>
+                  <span class="pun">:</span>
+                  <span class="com">//github.com/AOMediaCodec/libavif.git</span>
+                  <span class="pln"><br></span>
+                </code>
+              </pre>
+            </devsite-code>
+            <!--  -->
+            <ol type="1" start="2"><li>Change directory to libavif.</li></ol>
+            
+            <div></div>
+            <devsite-code data-copy-event-label="">
+              <pre class="" translate="no" dir="ltr" is-upgraded="" syntax="Text only">
+                <code translate="no" dir="ltr">
+                  <span class="pln">cd libavif</span>
+                  <span class="pun">/</span>
+                  <span class="pln"><br></span>
+                </code>
+              </pre>
+            </devsite-code>
+            <p>There are many different ways you can configure avifenc and libavif to build. You can find more information at <a href="https://github.com/AOMediaCodec/libavif" target="_blank">libavif</a>. We are going to build avifenc so that it is statically linked to the <a href="https://aomedia.googlesource.com/aom" target="_blank">libaom</a> encoder, <a href="https://code.videolan.org/videolan/dav1d" target="_blank">dav1d</a> decoder, and <a href="https://chromium.googlesource.com/libyuv/libyuv/" target="_blank">libyuv</a> processing libraries.</p>
+            <aside class="special"><p><a href="https://chromium.googlesource.com/libyuv/libyuv/" target="_blank">libyuv</a> is important for speeding up performance of color conversions.</p></aside>
+            
+  <ol type="1" start="3">
+  <li>Build the command line encoding tool, avifenc.</li>
+  </ol>
+  <p>It is a good idea to create a build directory for avifenc.</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="Text only"><code translate="no" dir="ltr"><span class="pln">mkdir build<br></span></code></pre></devsite-code>
+  <p>Change to the build directory.</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="Text only"><code translate="no" dir="ltr"><span class="pln">cd build<br></span></code></pre></devsite-code>
+  <p>Create the build files for avifenc.</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="scdoc"><code translate="no" dir="ltr"><span class="pln">cmake </span><span class="pun">-</span><span class="pln">DAVIF_CODEC_AOM</span><span class="pun">=</span><span class="pln">LOCAL </span><span class="pun">-</span><span class="pln">DAVIF_CODEC_DAV1D</span><span class="pun">=</span><span class="pln">LOCAL </span><span class="pun">-</span><span class="pln">DAVIF_LIBYUV</span><span class="pun">=</span><span class="pln">LOCAL </span><span class="pun">-</span><span class="pln">DBUILD_SHARED_LIBS</span><span class="pun">=</span><span class="pln">OFF </span><span class="pun">-</span><span class="pln">DAVIF_BUILD_APPS</span><span class="pun">=</span><span class="pln">ON </span><span class="pun">../</span><span class="pln"><br></span></code></pre></devsite-code>
+  <p>Build avifenc.</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="Text only"><code translate="no" dir="ltr"><span class="pln">make<br></span></code></pre></devsite-code>
+  <p>You have successfully built avifenc!</p>
+
+
+          </div>
+        </div>
+      </google-codelab-step><google-codelab-step label="Creating AVIF images with avifenc" duration="0" step="3" tabindex="-1">
+            <div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title"><a href="#3">4. Creating AVIF images with avifenc</a></h2>
+            
+            
+            <ol type="1">
+  <li>Create an AVIF image with default settings.</li>
+  </ol>
+  <p>The most basic parameters for avifenc to run, are setting the input and output files.</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="scdoc"><code translate="no" dir="ltr"><span class="pun">./</span><span class="pln">avifenc happy_dog</span><span class="pun">.</span><span class="pln">jpg example</span><span class="pun">.</span><span class="pln">avif<br></span></code></pre></devsite-code>
+  <p>You now have your very own second AVIF image!</p>
+  <ol type="1" start="2">
+  <li>Changing the quality of AVIF encoding.</li>
+  </ol>
+  <p>Typically the only parameter that you might want to change on AVIF encoding is the <code translate="no" dir="ltr">quality</code> parameter.  <code translate="no" dir="ltr">quality</code> is a parameter that trades quality of a compressed image for the size of the file. E.g. A high quality file (<code translate="no" dir="ltr">-q 90</code>) will be much bigger than a low quality file (<code translate="no" dir="ltr">-q 20</code>), but the high quality file will look much better.</p>
+  <aside class="special"><p> avifenc has a lot of options that will affect
+  both quality and speed. If you want to see the options and learn more 
+  about them just run <code translate="no" dir="ltr">./avifenc</code></p>
+  </aside>
+
+
+          </div></div></google-codelab-step><google-codelab-step label="Render AVIF images in a web page." duration="0" step="4" tabindex="-1"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title"><a href="#4">5. Render AVIF images in a web page.</a></h2>
+            
+            
+            <p>Now lets show the world all of your hard work.</p>
+  <ol type="1">
+  <li>Create a web page to serve your AVIF image.</li>
+  </ol>
+  <p>Create a file named <code translate="no" dir="ltr">avif_example.html</code>.</p>
+  <p>Open <code translate="no" dir="ltr">avif_example.html</code> in your text editor and type this code:</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="Carbon"><code translate="no" dir="ltr"><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">html</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">head</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">title&gt;</span><span class="pln">AVIF</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="pln">Example</span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">title</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">head</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">body</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">picture</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">source</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-k"><span class="atn">type</span></span><span class="devsite-syntax-p"><span class="pun">=</span></span><span class="devsite-syntax-s"><span class="atv">"image/avif"</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="atn">srcset</span></span><span class="devsite-syntax-p"><span class="pun">=</span></span><span class="devsite-syntax-s"><span class="atv">"example.avif"</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">img</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="atn">src</span></span><span class="devsite-syntax-p"><span class="pun">=</span></span><span class="devsite-syntax-s"><span class="atv">"happy_dog.jpg"</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">picture</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">body</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">html</span></span><span class="tag">&gt;</span><span class="pln"><br></span></code></pre></devsite-code>
+  <p>Copy your source file (in my case <code translate="no" dir="ltr">happy_dog.jpg</code>) and your AVIF file (<code translate="no" dir="ltr">eaxmple.avif</code>) into the same directory as <code translate="no" dir="ltr">avif_example.html</code>.</p>
+  <p>We are using the <code translate="no" dir="ltr">picture</code> 
+  element to render the AVIF image if the browser supports AVIF, with a 
+  fallback to JPEG if the browser does not. You can find out more 
+  information about the <code translate="no" dir="ltr">picture</code> element <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture" target="_blank">here</a>.</p>
+  <ol type="1" start="2">
+  <li>Open web page in Chrome.</li>
+  </ol>
+  <p>One way to open the html file is to drag <code translate="no" dir="ltr">avif_example.html</code> into Chrome. Another option to open the html file is to serve <code translate="no" dir="ltr">avif_example.html</code> from an HTTP server.</p>
+  <p>Now your AVIF image should be rendered in Chrome. You can test this by right clicking on the image and choosing <code translate="no" dir="ltr">Save image as...</code>, which should open a dialog box with <code translate="no" dir="ltr">example.avif</code>. Another option is to open Chrome Developer Tools and see that <code translate="no" dir="ltr">example.avif</code> is downloaded.</p>
+
+
+          </div></div></google-codelab-step><google-codelab-step label="Creating animated AVIF images with FFmpeg" duration="0" step="5" tabindex="-1"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title"><a href="#5">6. Creating animated AVIF images with FFmpeg</a></h2>
+            
+            
+            <aside class="warning"><p> Getting FFmpeg on your system is 
+  outside the scope of this codelab. For more information on how to get 
+  FFmpeg on your system please see the <a href="https://ffmpeg.org/ffmpeg.html" target="_blank">FFmpeg documentation</a>.</p>
+  </aside>
+  <aside class="special"><p> I created a y4m file for you to use in case you did not have a source media file: <a href="https://codelabs.developers.google.com/codelabs/avif/images/ice_qcif_15fps.y4m" target="_blank">ice_qcif_15fps.y4m</a>. The file is from <a href="https://media.xiph.org/video/derf/" target="_blank">Xiph.org Video Test Media</a>.</p>
+  </aside>
+  <aside class="warning"><p> Y4m files are not compressed so they can be very big.</p>
+  </aside>
+  <ol type="1">
+  <li>Create an animated AVIF image.</li>
+  </ol>
+  <p>Run this command to create an animated AVIF image from a y4m file.</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="scdoc"><code translate="no" dir="ltr"><span class="pln">ffmpeg </span><span class="pun">-</span><span class="pln">i ice_qcif_15fps</span><span class="pun">.</span><span class="pln">y4m animated</span><span class="pun">.</span><span class="pln">avif<br></span></code></pre></devsite-code>
+  <p>You now have your very own animated AVIF image!</p>
+  <ol type="1" start="2">
+  <li>Render the animated AVIF image in a web page.</li>
+  </ol>
+  <p>Create a file named <code translate="no" dir="ltr">avif_animated_example.html</code>.</p>
+  <aside class="special"><p> I created a gif file for you to use in case you did not have a source media file: <a href="https://codelabs.developers.google.com/static/codelabs/avif/images/ice_qcif_15fps.gif" target="_blank">ice_qcif_15fps.gif</a>.</p>
+  </aside>
+  <p>Open <code translate="no" dir="ltr">avif_animated_example.html</code> in your text editor and type this code:</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="Carbon"><code translate="no" dir="ltr"><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">html</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">head</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">title&gt;</span><span class="pln">Animated</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="pln">AVIF</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="pln">Example</span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">title</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">head</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">body</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">picture</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">source</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-k"><span class="atn">type</span></span><span class="devsite-syntax-p"><span class="pun">=</span></span><span class="devsite-syntax-s"><span class="atv">"image/avif"</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="atn">srcset</span></span><span class="devsite-syntax-p"><span class="pun">=</span></span><span class="devsite-syntax-s"><span class="atv">"animated.avif"</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">img</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="atn">src</span></span><span class="devsite-syntax-p"><span class="pun">=</span></span><span class="devsite-syntax-s"><span class="atv">"ice_qcif_15fps.gif"</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">picture</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">body</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">html</span></span><span class="tag">&gt;</span><span class="pln"><br></span></code></pre></devsite-code>
+  <p>Copy your source file (in the case above <code translate="no" dir="ltr">ice_qcif_15fps.gif</code>) and your AVIF file (<code translate="no" dir="ltr">animated.avif</code>) into the same directory as <code translate="no" dir="ltr">avif_animated_example.html</code>.</p>
+  <ol type="1" start="3">
+  <li>Open web page in Chrome.</li>
+  </ol>
+  <p>One way to open the html file is to drag <code translate="no" dir="ltr">avif_animated_example.html</code> into Chrome. Another option to open the html file is to serve <code translate="no" dir="ltr">avif_animated_example.html</code> from an HTTP server.</p>
+  <p>Now your animated AVIF image should be rendered in Chrome.</p>
+  <p>If using the sample media provided, it should look roughly like this:</p>
+  <p class="image-container"><img alt="Animated ice rink" style="width: 176.00px" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/ice_qcif_15fps.gif"></p>
+  <p>You can test this is an animated AVIF image by right clicking on the image and choosing <code translate="no" dir="ltr">Save image as...</code>, which should open a dialog box with <code translate="no" dir="ltr">animated.avif</code>. Another option is to open Chrome Developer Tools and see that <code translate="no" dir="ltr">animated.avif</code> is downloaded.</p>
+
+
+          </div></div></google-codelab-step><google-codelab-step label="Creating animated AVIF images with avifenc" duration="0" step="6" tabindex="-1"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title"><a href="#6">7. Creating animated AVIF images with avifenc</a></h2>
+            
+            
+            <ol type="1">
+  <li>Convert your source media into y4m format.</li>
+  </ol>
+  <p><code translate="no" dir="ltr">avifenc</code> supports <a href="https://wiki.multimedia.cx/index.php/YUV4MPEG2" target="_blank">y4m</a> as the input to create animated AVIF images. A great option to create y4m files is to use <a href="https://ffmpeg.org/" target="_blank">FFmpeg</a>.</p>
+  <aside class="warning"><p> Y4m files are not compressed so they can be very big.</p>
+  </aside>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="scdoc"><code translate="no" dir="ltr"><span class="pln">ffmpeg </span><span class="pun">-</span><span class="pln">i input</span><span class="pun">.</span><span class="pln">gif </span><span class="pun">-</span><span class="pln">pix_fmt yuvj444p </span><span class="pun">-</span><span class="pln">f yuv4mpegpipe output</span><span class="pun">.</span><span class="pln">y4m<br></span></code></pre></devsite-code>
+  <ol type="1" start="2">
+  <li>Create an animated AVIF image.</li>
+  </ol>
+  <aside class="special"><p> I created a y4m file for you to use in case you did not have a source media file: <a href="https://codelabs.developers.google.com/codelabs/avif/images/ice_qcif_15fps.y4m" target="_blank">ice_qcif_15fps.y4m</a>. The file is from <a href="https://media.xiph.org/video/derf/" target="_blank">Xiph.org Video Test Media</a>.</p>
+  </aside>
+  <p>Run this command to create an animated AVIF image from a y4m file.</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="scdoc"><code translate="no" dir="ltr"><span class="pun">./</span><span class="pln">avifenc ice_qcif_15fps</span><span class="pun">.</span><span class="pln">y4m animated</span><span class="pun">.</span><span class="pln">avif<br></span></code></pre></devsite-code>
+  <p>You now have your very own second animated AVIF image!</p>
+  <ol type="1" start="3">
+  <li>Render the animated AVIF image in a web page.</li>
+  </ol>
+  <p>Create a file named <code translate="no" dir="ltr">avif_animated_example.html</code>.</p>
+  <aside class="special"><p> I created a gif file for you to use in case you did not have a source media file: <a href="https://codelabs.developers.google.com/static/codelabs/avif/images/ice_qcif_15fps.gif" target="_blank">ice_qcif_15fps.gif</a>.</p>
+  </aside>
+  <p>Open <code translate="no" dir="ltr">avif_animated_example.html</code> in your text editor and type this code:</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="Carbon"><code translate="no" dir="ltr"><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">html</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">head</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">title&gt;</span><span class="pln">Animated</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="pln">AVIF</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="pln">Example</span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">title</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">head</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">body</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">picture</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">source</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-k"><span class="atn">type</span></span><span class="devsite-syntax-p"><span class="pun">=</span></span><span class="devsite-syntax-s"><span class="atv">"image/avif"</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="atn">srcset</span></span><span class="devsite-syntax-p"><span class="pun">=</span></span><span class="devsite-syntax-s"><span class="atv">"animated.avif"</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-nx"><span class="tag">img</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-nx"><span class="atn">src</span></span><span class="devsite-syntax-p"><span class="pun">=</span></span><span class="devsite-syntax-s"><span class="atv">"ice_qcif_15fps.gif"</span></span><span class="devsite-syntax-w"><span class="pln"> </span></span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; &nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">picture</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="devsite-syntax-w"><span class="pln">&nbsp; </span></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">body</span></span><span class="tag">&gt;</span><span class="pln"><br></span><span class="tag">&lt;</span><span class="devsite-syntax-o"><span class="tag">/</span></span><span class="devsite-syntax-nx"><span class="tag">html</span></span><span class="tag">&gt;</span><span class="pln"><br></span></code></pre></devsite-code>
+  <p>Copy your source file (in the case above <code translate="no" dir="ltr">ice_qcif_15fps.gif</code>) and your AVIF file (<code translate="no" dir="ltr">animated.avif</code>) into the same directory as <code translate="no" dir="ltr">avif_animated_example.html</code>.</p>
+  <ol type="1" start="4">
+  <li>Open web page in Chrome.</li>
+  </ol>
+  <p>One way to open the html file is to drag <code translate="no" dir="ltr">avif_animated_example.html</code> into Chrome. Another option to open the html file is to serve <code translate="no" dir="ltr">avif_animated_example.html</code> from an HTTP server.</p>
+  <p>Now your animated AVIF image should be rendered in Chrome.</p>
+  <p>If using the sample media provided, it should look like this:</p>
+  <p class="image-container"><img alt="Animated ice rink" style="width: 176.00px" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/ice_qcif_15fps.gif"></p>
+  <aside class="special"><p> Except with the animated AVIF, much better quality.</p>
+  </aside>
+  <p>You can test this is an animated AVIF image by right clicking on the image and choosing <code translate="no" dir="ltr">Save image as...</code>, which should open a dialog box with <code translate="no" dir="ltr">animated.avif</code>. Another option is to open Chrome Developer Tools and see that <code translate="no" dir="ltr">animated.avif</code> is downloaded.</p>
+  <ol type="1" start="5">
+  <li>Changing the quality of AVIF encoding.</li>
+  </ol>
+  <p>The <a href="https://codelabs.developers.google.com/static/codelabs/avif/images/ice_qcif_15fps.gif" target="_blank">ice_qcif_15fps.gif</a> file is ~7x bigger with much worse quality. You can change the quality of AVIF to roughly match the quality of <a href="https://codelabs.developers.google.com/static/codelabs/avif/images/ice_qcif_15fps.gif" target="_blank">ice_qcif_15fps.gif</a> by changing the quality parameter to 20.</p>
+  <div></div><devsite-code data-copy-event-label=""><pre class="" translate="no" dir="ltr" is-upgraded="" syntax="scdoc"><code translate="no" dir="ltr"><span class="pun">./</span><span class="pln">avifenc </span><span class="pun">-</span><span class="pln">q </span><span class="lit">20</span><span class="pln"> ice_qcif_15fps</span><span class="pun">.</span><span class="pln">y4m animated</span><span class="pun">.</span><span class="pln">avif<br></span></code></pre></devsite-code>
+  <p>Now the animated AVIF file and <a href="https://codelabs.developers.google.com/static/codelabs/avif/images/ice_qcif_15fps.gif" target="_blank">ice_qcif_15fps.gif</a> have about the same quality, but the GIF file is ~22x bigger.</p>
+
+
+          </div></div></google-codelab-step><google-codelab-step label="Congratulations!" duration="0" step="7" tabindex="-1"><div class="instructions"><div class="inner"><h2 is-upgraded="" class="step-title"><a href="#7">8. Congratulations!</a></h2>
+            
+            
+            <p>You have finished the serving AVIF images code lab!</p>
+  <p>Hopefully it's clear to you how AVIF can help make your images 
+  smaller and more efficient to transmit over the web. You can learn more 
+  about the features of AVIF in a great <a href="https://jakearchibald.com/2020/avif-has-landed/" target="_blank">post</a> by Jake Archibald.</p>
+
+
+          </div></div></google-codelab-step></div><div id="controls"><div id="fabs"><a href="#" id="previous-step" title="Previous step" aria-hidden="" disappear="" tabindex="-1">Back</a><div class="spacer"><devsite-language-selector aria-label="Select your language preference.">
+    <ul role="presentation">
+      
+      
+      <li role="presentation">
+        <a role="menuitem" lang="en" href="https://codelabs.developers.google.com/codelabs/avif#0" aria-current="true">English</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="de" href="https://codelabs.developers.google.com/codelabs/avif?hl=de#0">Deutsch</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="es" href="https://codelabs.developers.google.com/codelabs/avif?hl=es#0">Español</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="es-419" href="https://codelabs.developers.google.com/codelabs/avif?hl=es-419#0">Español – América Latina</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="fr" href="https://codelabs.developers.google.com/codelabs/avif?hl=fr#0">Français</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="id" href="https://codelabs.developers.google.com/codelabs/avif?hl=id#0">Indonesia</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="it" href="https://codelabs.developers.google.com/codelabs/avif?hl=it#0">Italiano</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="pl" href="https://codelabs.developers.google.com/codelabs/avif?hl=pl#0">Polski</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="pt-br" href="https://codelabs.developers.google.com/codelabs/avif?hl=pt-br#0">Português – Brasil</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="vi" href="https://codelabs.developers.google.com/codelabs/avif?hl=vi#0">Tiếng Việt</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="tr" href="https://codelabs.developers.google.com/codelabs/avif?hl=tr#0">Türkçe</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="ru" href="https://codelabs.developers.google.com/codelabs/avif?hl=ru#0">Русский</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="he" href="https://codelabs.developers.google.com/codelabs/avif?hl=he#0">עברית</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="ar" href="https://codelabs.developers.google.com/codelabs/avif?hl=ar#0">العربيّة</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="fa" href="https://codelabs.developers.google.com/codelabs/avif?hl=fa#0">فارسی</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="hi" href="https://codelabs.developers.google.com/codelabs/avif?hl=hi#0">हिंदी</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="bn" href="https://codelabs.developers.google.com/codelabs/avif?hl=bn#0">বাংলা</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="th" href="https://codelabs.developers.google.com/codelabs/avif?hl=th#0">ภาษาไทย</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="zh-cn" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-cn#0">中文 – 简体</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="zh-tw" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-tw#0">中文 – 繁體</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="ja" href="https://codelabs.developers.google.com/codelabs/avif?hl=ja#0">日本語</a>
+      </li>
+      
+      <li role="presentation">
+        <a role="menuitem" lang="ko" href="https://codelabs.developers.google.com/codelabs/avif?hl=ko#0">한국어</a>
+      </li>
+      
+    </ul>
+  </devsite-language-selector></div><a href="#" id="next-step" title="Next step">Next</a><a href="https://codelabs.developers.google.com/" id="done" hidden="" title="Codelab complete" class="no-return-url">Done</a></div></div></div><div class="metadata"><a href="#" id="codelab-feedback"><i class="material-icons">bug_report</i> Report a mistake</a></div></google-codelab>
+  
+  
+
+  
+
+
+</div>
+<!-- anouar: END div class="devsite-article-body clearfix" -->
+  
+
+  
+    
+    
+    
+  
+
+  
+  <div class="devsite-floating-action-buttons">
+  
+  
+</div>
+</article>
+
+
+<devsite-content-footer class="nocontent">
+  <p>Except as otherwise noted, the content of this page is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a>, and code samples are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see the <a href="https://developers.google.com/site-policies">Google Developers Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  
+</devsite-content-footer>
+
+
+<devsite-notification>
+</devsite-notification>
+
+
+  
+<div class="devsite-content-data">
+  
+  
+    <template class="devsite-content-data-template">
+      [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my
+ 
+problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],
+[["Missing the information I 
+need","missingTheInformationINeed","thumb-down"],["Too complicated / too
+ many steps","tooComplicatedTooManySteps","thumb-down"],["Out of 
+date","outOfDate","thumb-down"],["Samples / code 
+issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-
+down"]],[],[],[]]
+    </template>
+  
+</div>
+            
+          </devsite-content>
+        </main>
+        <devsite-footer-promos class="devsite-footer">
+          
+            
+          
+        </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+          
+            
+<nav class="devsite-footer-linkboxes nocontent" aria-label="Footer links">
+  
+  <ul class="devsite-footer-linkboxes-list">
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Connect</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://googledevelopers.blogspot.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            Blog
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.facebook.com/Google-Developers-967415219957038" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            Facebook
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://medium.com/google-developers" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            Medium
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://twitter.com/googledevs" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+          
+            Twitter
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.youtube.com/user/GoogleDevelopers" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 5)">
+            
+              
+              
+            
+          
+            YouTube
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Programs</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.womentechmakers.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            Women Techmakers
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developers.google.com/community/gdg" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            Google Developer Groups
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developers.google.com/community/experts" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            Google Developer Experts
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developers.google.com/community/accelerators" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+              
+              
+            
+          
+            Accelerators
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Developer consoles</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://console.developers.google.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 1)">
+            
+          
+            Google API Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://console.cloud.google.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 2)">
+            
+          
+            Google Cloud Platform Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://play.google.com/apps/publish" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 3)">
+            
+          
+            Google Play Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://console.firebase.google.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 4)">
+            
+          
+            Firebase Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://console.actions.google.com/" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 5)">
+            
+          
+            Actions on Google Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://cast.google.com/publish" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 6)">
+            
+          
+            Cast SDK Developer Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://chrome.google.com/webstore/developer/dashboard" class="devsite-footer-linkbox-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Link (index 7)">
+            
+              
+              
+            
+          
+            Chrome Web Store Dashboard
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+  
+</nav>
+          
+        </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+          
+            
+
+<div class="devsite-footer-utility nocontent">
+  
+  
+  <nav class="devsite-footer-sites" aria-label="Other Google Developers websites">
+    <a href="https://developers.google.com/" class="devsite-footer-sites-logo-link gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google Developers Link">
+      <picture>
+        
+        <img class="devsite-footer-sites-logo" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/lockup-google-for-developers.svg" loading="lazy" alt="Google Developers">
+      </picture>
+    </a>
+    <ul class="devsite-footer-sites-list">
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://developer.android.com/" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Android Link">
+          Android
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://developer.chrome.com/home" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Chrome Link">
+          Chrome
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://firebase.google.com/" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Firebase Link">
+          Firebase
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://cloud.google.com/" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Google Cloud Platform Link">
+          Google Cloud Platform
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="https://developers.google.com/products" class="devsite-footer-sites-link
+                  gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer All products Link">
+          All products
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+
+  
+  <nav class="devsite-footer-utility-links" aria-label="Utility links">
+    
+    <ul class="devsite-footer-utility-list">
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://developers.google.com/terms/site-terms" data-category="Site-Wide Custom Events" data-label="Footer Terms link">
+          Terms
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://policies.google.com/privacy" data-category="Site-Wide Custom Events" data-label="Footer Privacy link">
+          Privacy
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 glue-cookie-notification-bar-control" aria-controls="glue-cookie-notification-bar-1" aria-expanded="false">Manage cookies</li>
+      
+      <li class="devsite-footer-utility-item
+                 devsite-footer-utility-button">
+        
+        <span class="devsite-footer-utility-description">Sign up for the Google Developers newsletter</span>
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event" href="https://services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch" data-category="Site-Wide Custom Events" data-label="Footer Subscribe link">
+          Subscribe
+        </a>
+        
+      </li>
+      
+    </ul>
+    
+    
+<devsite-language-selector aria-label="Select your language preference.">
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en" href="https://codelabs.developers.google.com/codelabs/avif#0" aria-current="true">English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="de" href="https://codelabs.developers.google.com/codelabs/avif?hl=de#0">Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es" href="https://codelabs.developers.google.com/codelabs/avif?hl=es#0">Español</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es-419" href="https://codelabs.developers.google.com/codelabs/avif?hl=es-419#0">Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fr" href="https://codelabs.developers.google.com/codelabs/avif?hl=fr#0">Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id" href="https://codelabs.developers.google.com/codelabs/avif?hl=id#0">Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="it" href="https://codelabs.developers.google.com/codelabs/avif?hl=it#0">Italiano</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pl" href="https://codelabs.developers.google.com/codelabs/avif?hl=pl#0">Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt-br" href="https://codelabs.developers.google.com/codelabs/avif?hl=pt-br#0">Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="vi" href="https://codelabs.developers.google.com/codelabs/avif?hl=vi#0">Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="tr" href="https://codelabs.developers.google.com/codelabs/avif?hl=tr#0">Türkçe</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ru" href="https://codelabs.developers.google.com/codelabs/avif?hl=ru#0">Русский</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="he" href="https://codelabs.developers.google.com/codelabs/avif?hl=he#0">עברית</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ar" href="https://codelabs.developers.google.com/codelabs/avif?hl=ar#0">العربيّة</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fa" href="https://codelabs.developers.google.com/codelabs/avif?hl=fa#0">فارسی</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="hi" href="https://codelabs.developers.google.com/codelabs/avif?hl=hi#0">हिंदी</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="bn" href="https://codelabs.developers.google.com/codelabs/avif?hl=bn#0">বাংলা</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="th" href="https://codelabs.developers.google.com/codelabs/avif?hl=th#0">ภาษาไทย</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh-cn" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-cn#0">中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh-tw" href="https://codelabs.developers.google.com/codelabs/avif?hl=zh-tw#0">中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja" href="https://codelabs.developers.google.com/codelabs/avif?hl=ja#0">日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko" href="https://codelabs.developers.google.com/codelabs/avif?hl=ko#0">한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+  </nav>
+</div>
+          
+        </devsite-footer-utility>
+        <devsite-panel style="height: auto;"></devsite-panel>
+        
+      </section></section>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar style="bottom: 0px;"></devsite-snackbar>
+    <devsite-tooltip></devsite-tooltip>
+    <devsite-heading-link></devsite-heading-link>
+    <devsite-analytics>
+      
+        <script async="" src="Serving%20AVIF%20Images%20_%20Google%20Codelabs_files/app_loader.js"></script><script type="application/json" analytics="">[]</script>
+<script type="application/json" tag-management="">{&#34;at&#34;: &#34;True&#34;, &#34;ga4&#34;: [], &#34;ga4p&#34;: [], &#34;gtm&#34;: [], &#34;parameters&#34;: {&#34;internalUser&#34;: &#34;False&#34;, &#34;language&#34;: {&#34;machineTranslated&#34;: &#34;False&#34;, &#34;requested&#34;: &#34;en&#34;, &#34;served&#34;: &#34;en&#34;}, &#34;pageType&#34;: &#34;codelab&#34;, &#34;projectName&#34;: null, &#34;signedIn&#34;: &#34;False&#34;, &#34;tenant&#34;: &#34;codelabs&#34;, &#34;recommendations&#34;: {&#34;sourcePage&#34;: &#34;&#34;, &#34;sourceType&#34;: 0, &#34;sourceRank&#34;: 0, &#34;sourceIdenticalDescriptions&#34;: 0, &#34;sourceTitleWords&#34;: 0, &#34;sourceDescriptionWords&#34;: 0, &#34;experiment&#34;: &#34;&#34;}, &#34;experiment&#34;: {&#34;ids&#34;: &#34;&#34;}}}</script>
+      
+    </devsite-analytics>
+    
+      <devsite-badger></devsite-badger>
+    
+    
+    
+<script nonce="">
+  
+  (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/prod/vbddb2c68c6e27c8062b052e877e6ccde82ab61ee731962a34dca560b12d02759/codelabs/js/app_loader.js', '[17,"en",null,"/js/devsite_app_module.js","https://www.gstatic.com/devrel-devsite/prod/vbddb2c68c6e27c8062b052e877e6ccde82ab61ee731962a34dca560b12d02759","https://www.gstatic.com/devrel-devsite/prod/vbddb2c68c6e27c8062b052e877e6ccde82ab61ee731962a34dca560b12d02759/codelabs","https://codelabs-dot-devsite-v2-prod.appspot.com",1,null,["/_pwa/codelabs/manifest.json","https://www.gstatic.com/devrel-devsite/prod/vbddb2c68c6e27c8062b052e877e6ccde82ab61ee731962a34dca560b12d02759/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/prod/vbddb2c68c6e27c8062b052e877e6ccde82ab61ee731962a34dca560b12d02759/codelabs/images/favicon.png","https://www.gstatic.com/devrel-devsite/prod/vbddb2c68c6e27c8062b052e877e6ccde82ab61ee731962a34dca560b12d02759/codelabs/images/lockup.svg","https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,21,25,50,52,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,112,113,117,118,120,122,124,125,126,127,129,130,131,132,133,134,135,136,138,140,141,147,148,149,151,152,156,157,158,159,161,163,164,168,169,170,179,180,182,183,186,191,193,196],"AIzaSyAP-jjEJBzmIyKR4F-3XITp8yM9T1gEEI8","AIzaSyB6xiKGDR5O3Ak2okS4rLkauxGUG7XP0hg","codelabs.developers.google.com","AIzaSyAQk0fBONSGUqCNznf6Krs82Ap1-NV6J4o","AIzaSyCCxcqdrZ_7QMeLCRY20bh_SXdAYqy70KY",null,null,null,["BookNav__enable_tenant_cache_key","Profiles__enable_stripe_subscription_management","MiscFeatureFlags__developers_footer_dark_image","DevPro__enable_devpro_offers","MiscFeatureFlags__enable_framebox_badge_methods","Cloud__enable_cloud_shell_fte_user_flow","Concierge__enable_actions_menu","Experiments__reqs_query_experiments","Cloud__enable_free_trial_server_call","Search__enable_page_map","Cloud__enable_llm_concierge_chat","Profiles__enable_profile_collections","MiscFeatureFlags__enable_variable_operator_index_yaml","Profiles__enable_completecodelab_endpoint","Profiles__enable_release_notes_notifications","MiscFeatureFlags__enable_variable_operator","TpcFeatures__enable_unmirrored_page_left_nav","Profiles__enable_join_program_group_endpoint","CloudShell__cloud_code_overflow_menu","Search__enable_dynamic_content_confidential_banner","Cloud__enable_cloud_facet_chat","MiscFeatureFlags__enable_view_transitions","Cloud__enable_legacy_calculator_redirect","MiscFeatureFlags__enable_explain_this_code","TpcFeatures__enable_mirror_tenant_redirects","Cloud__enable_cloud_shell","DevPro__enable_cloud_innovators_plus","Profiles__enable_dashboard_curated_recommendations","Profiles__enable_page_saving","Analytics__enable_clearcut_logging","Profiles__enable_complete_playlist_endpoint","EngEduTelemetry__enable_engedu_telemetry","Cloud__enable_cloudx_ping","Cloud__enable_cloudx_experiment_ids","Concierge__enable_pushui","Cloud__enable_cloud_dlp_service","Search__enable_ai_eligibility_checks","Search__enable_suggestions_from_borg","Profiles__enable_recognition_badges","MiscFeatureFlags__enable_project_variables","DevPro__enable_developer_subscriptions","Profiles__enable_developer_profiles_callout","Profiles__require_profile_eligibility_for_signin","MiscFeatureFlags__developers_footer_image","MiscFeatureFlags__emergency_css","Profiles__enable_completequiz_endpoint","Profiles__enable_public_developer_profiles","CloudShell__cloud_shell_button","Profiles__enable_awarding_url","Profiles__enable_purchase_prompts","MiscFeatureFlags__enable_firebase_utm"],null,null,"AIzaSyBLEMok-5suZ67qRPzx0qUtbnLmyT_kCVE","https://developerscontentserving-pa.clients6.google.com","AIzaSyCM4QpTRSqP5qI4Dvjt4OAScIN8sOUlO-k","https://developerscontentsearch-pa.clients6.google.com",1,4,null,"https://developerprofiles-pa.clients6.google.com",[17,"codelabs","Google Codelabs","codelabs.developers.google.com",null,"codelabs-dot-devsite-v2-prod.appspot.com",null,null,[null,1,null,null,null,null,null,null,null,null,null,[1],null,null,null,null,null,null,[1],null,null,null,null,[1]],null,[33,null,null,null,null,null,"/images/lockup.svg",null,null,null,null,1,1,null,null,null,null,null,null,null,null,1,null,null,null,null,[]],[],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[6,1,14,15,20,22,23,29,32,36],null,[[],[1,1]],[[null,null,null,null,null,null,null,null,null,null,null,null,1]],null,4],null,"pk_live_5170syrHvgGVmSx9sBrnWtA5luvk9BwnVcvIi7HizpwauFG96WedXsuXh790rtij9AmGllqPtMLfhe2RSwD6Pn38V00uBCydV4m",1,null,"https://developerscontentinsights-pa.clients6.google.com","AIzaSyCg-ZUslalsEbXMfIo9ZP8qufZgo3LSBDU","AIzaSyDxT0vkxnY_KeINtA4LSePJO-4MAZPMRsE"]')
+  
+</script>
+
+    <devsite-a11y-announce aria-live="assertive" aria-atomic="true"></devsite-a11y-announce>
+  
+</body></html>

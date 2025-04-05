@@ -1,0 +1,11 @@
+<activity>
+    <leftItem id="a" match="3">Fruit and vegetables</leftItem>
+    <leftItem id="b" match="4">12.5 million tonnes of paper and cardboard</leftItem>
+    <leftItem id="c" match="1">Old plastic bottles</leftItem>
+    <leftItem id="d" match="2">The houses in Melford</leftItem>
+    
+    <rightItem id="1" match="c">are collected from recycling bins.</rightItem>
+    <rightItem id="2" match="d">are built from wood.</rightItem>
+    <rightItem id="3" match="a">are grown on the farm near the village.</rightItem>
+    <rightItem id="4" match="b">are used in Britain every year.</rightItem>
+</activity>

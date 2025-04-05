@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Matching Activity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .column {
+            width: 48%;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+        }
+        
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .card.selected {
+            background-color: #e3f2fd;
+            border: 1px solid #90caf9;
+        }
+        
+        .card.correct {
+            background-color: #e8f5e9;
+            border: 1px solid #a5d6a7;
+        }
+        
+        .card.incorrect {
+            background-color: #ffebee;
+            border: 1px solid #ef9a9a;
+        }
+        
+        .instructions {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        #loadFile {
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #loadFile:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sentence Matching Activity</h1>
+    
+    <div class="instructions">
+        <p><strong>Instructions:</strong> Match each sentence part on the left with its corresponding part on the right. Click on one item from each column to make a pair. When all items are matched, you'll see your results.</p>
+    </div>
+    
+    <input type="file" id="fileInput" accept=".txt,.xml">
+    <button id="loadFile">Load Activity Data</button>
+    
+    <div class="container">
+        <div class="column" id="leftColumn">
+            <!-- Left column items will be loaded here -->
+        </div>
+        
+        <div class="column" id="rightColumn">
+            <!-- Right column items will be loaded here -->
+        </div>
+    </div>
+    
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Results</h2>
+            <div id="resultContent"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Sample data structure
+        let activityData = {
+            leftItems: [
+                { id: 'a', text: 'sentence 1 part 1', match: '3' },
+                { id: 'b', text: 'sentence 2 part 1', match: '4' },
+                { id: 'c', text: 'sentence 3 part 1', match: '1' },
+                { id: 'd', text: 'sentence 4 part 1', match: '2' }
+            ],
+            rightItems: [
+                { id: '1', text: 'sentence 3 part 2', match: 'c' },
+                { id: '2', text: 'sentence 4 part 2', match: 'd' },
+                { id: '3', text: 'sentence 1 part 2', match: 'a' },
+                { id: '4', text: 'sentence 2 part 2', match: 'b' }
+            ]
+        };
+        
+        // DOM elements
+        const leftColumn = document.getElementById('leftColumn');
+        const rightColumn = document.getElementById('rightColumn');
+        const fileInput = document.getElementById('fileInput');
+        const loadFileBtn = document.getElementById('loadFile');
+        const modal = document.getElementById('resultModal');
+        const resultContent = document.getElementById('resultContent');
+        const closeBtn = document.querySelector('.close');
+        
+        // State variables
+        let selectedLeftCard = null;
+        let selectedRightCard = null;
+        let matches = [];
+        
+        // Initialize the activity
+        function initActivity() {
+            leftColumn.innerHTML = '';
+            rightColumn.innerHTML = '';
+            matches = [];
+            
+            // Create left column cards
+            activityData.leftItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.id = item.id;
+                card.dataset.match = item.match;
+                card.textContent = `${item.id}. ${item.text}`;
+                card.addEventListener('click', () => selectCard(card, 'left'));
+                leftColumn.appendChild(card);
+            });
+            
+            // Create right column cards
+            activityData.rightItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.id = item.id;
+                card.dataset.match = item.match;
+                card.textContent = `${item.id}. ${item.text}`;
+                card.addEventListener('click', () => selectCard(card, 'right'));
+                rightColumn.appendChild(card);
+            });
+        }
+        
+        // Handle card selection
+        function selectCard(card, column) {
+            // If card is already matched, don't allow selection
+            if (card.classList.contains('correct')) return;
+            
+            // Deselect if clicking the same card
+            if ((column === 'left' && selectedLeftCard === card) || 
+                (column === 'right' && selectedRightCard === card)) {
+                if (column === 'left') {
+                    selectedLeftCard.classList.remove('selected');
+                    selectedLeftCard = null;
+                } else {
+                    selectedRightCard.classList.remove('selected');
+                    selectedRightCard = null;
+                }
+                return;
+            }
+            
+            // Select the card
+            if (column === 'left') {
+                if (selectedLeftCard) selectedLeftCard.classList.remove('selected');
+                selectedLeftCard = card;
+            } else {
+                if (selectedRightCard) selectedRightCard.classList.remove('selected');
+                selectedRightCard = card;
+            }
+            card.classList.add('selected');
+            
+            // If both cards are selected, check for match
+            if (selectedLeftCard && selectedRightCard) {
+                checkMatch();
+            }
+        }
+        
+        // Check if selected cards match
+        function checkMatch() {
+            const leftId = selectedLeftCard.dataset.id;
+            const leftMatch = selectedLeftCard.dataset.match;
+            const rightId = selectedRightCard.dataset.id;
+            const rightMatch = selectedRightCard.dataset.match;
+            
+            // Check if it's a correct match
+            if (leftMatch === rightId && rightMatch === leftId) {
+                selectedLeftCard.classList.remove('selected');
+                selectedLeftCard.classList.add('correct');
+                selectedRightCard.classList.remove('selected');
+                selectedRightCard.classList.add('correct');
+                
+                // Add to matches array
+                matches.push({
+                    left: leftId,
+                    right: rightId,
+                    correct: true
+                });
+            } else {
+                selectedLeftCard.classList.add('incorrect');
+                selectedRightCard.classList.add('incorrect');
+                
+                // Add to matches array
+                matches.push({
+                    left: leftId,
+                    right: rightId,
+                    correct: false
+                });
+                
+                // Reset after delay
+                setTimeout(() => {
+                    selectedLeftCard.classList.remove('selected', 'incorrect');
+                    selectedRightCard.classList.remove('selected', 'incorrect');
+                }, 1000);
+            }
+            
+            // Reset selection
+            selectedLeftCard = null;
+            selectedRightCard = null;
+            
+            // Check if all matches are made
+            checkCompletion();
+        }
+        
+        // Check if all items have been matched
+        function checkCompletion() {
+            const allLeftCards = document.querySelectorAll('#leftColumn .card');
+            const allRightCards = document.querySelectorAll('#rightColumn .card');
+            
+            let allMatched = true;
+            
+            // Check left column
+            allLeftCards.forEach(card => {
+                if (!card.classList.contains('correct')) {
+                    allMatched = false;
+                }
+            });
+            
+            // Check right column
+            allRightCards.forEach(card => {
+                if (!card.classList.contains('correct')) {
+                    allMatched = false;
+                }
+            });
+            
+            if (allMatched) {
+                showResults();
+            }
+        }
+        
+        // Show results modal
+        function showResults() {
+            const correctMatches = matches.filter(match => match.correct).length;
+            const totalMatches = activityData.leftItems.length;
+            const incorrectMatches = totalMatches - correctMatches;
+            
+            let resultHTML = `<p>You got ${correctMatches} out of ${totalMatches} matches correct!</p>`;
+            
+            if (incorrectMatches > 0) {
+                resultHTML += `<p>Please review these pairs:</p><ul>`;
+                
+                matches.forEach(match => {
+                    if (!match.correct) {
+                        const leftItem = activityData.leftItems.find(item => item.id === match.left);
+                        const rightItem = activityData.rightItems.find(item => item.id === match.right);
+                        
+                        resultHTML += `<li>${leftItem.id}. ${leftItem.text} ↔ ${rightItem.id}. ${rightItem.text}</li>`;
+                    }
+                });
+                
+                resultHTML += `</ul>`;
+            } else {
+                resultHTML += `<p>Perfect! All matches are correct.</p>`;
+            }
+            
+            resultContent.innerHTML = resultHTML;
+            modal.style.display = 'block';
+        }
+        
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Load data from file
+        loadFileBtn.addEventListener('click', () => {
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a file first.');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const content = e.target.result;
+                    
+                    // Check if it's XML
+                    if (file.name.endsWith('.xml')) {
+                        parseXML(content);
+                    } else {
+                        // Assume it's TXT
+                        parseTXT(content);
+                    }
+                    
+                    initActivity();
+                } catch (error) {
+                    alert('Error parsing file: ' + error.message);
+                    console.error(error);
+                }
+            };
+            reader.readAsText(file);
+        });
+        
+        // Parse XML file
+        function parseXML(xmlString) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+            
+            activityData = {
+                leftItems: [],
+                rightItems: []
+            };
+            
+            // Get left items
+            const leftItems = xmlDoc.getElementsByTagName('leftItem');
+            for (let i = 0; i < leftItems.length; i++) {
+                const item = leftItems[i];
+                activityData.leftItems.push({
+                    id: item.getAttribute('id'),
+                    text: item.textContent,
+                    match: item.getAttribute('match')
+                });
+            }
+            
+            // Get right items
+            const rightItems = xmlDoc.getElementsByTagName('rightItem');
+            for (let i = 0; i < rightItems.length; i++) {
+                const item = rightItems[i];
+                activityData.rightItems.push({
+                    id: item.getAttribute('id'),
+                    text: item.textContent,
+                    match: item.getAttribute('match')
+                });
+            }
+        }
+        
+        // Parse TXT file
+        function parseTXT(txtString) {
+            const lines = txtString.split('\n');
+            activityData = {
+                leftItems: [],
+                rightItems: []
+            };
+            
+            lines.forEach(line => {
+                line = line.trim();
+                if (line.startsWith('left:')) {
+                    const parts = line.substring(5).split('|');
+                    if (parts.length === 3) {
+                        activityData.leftItems.push({
+                            id: parts[0].trim(),
+                            text: parts[1].trim(),
+                            match: parts[2].trim()
+                        });
+                    }
+                } else if (line.startsWith('right:')) {
+                    const parts = line.substring(6).split('|');
+                    if (parts.length === 3) {
+                        activityData.rightItems.push({
+                            id: parts[0].trim(),
+                            text: parts[1].trim(),
+                            match: parts[2].trim()
+                        });
+                    }
+                }
+            });
+        }
+        
+        // Initialize with sample data
+        initActivity();
+    </script>
+</body>
+</html>

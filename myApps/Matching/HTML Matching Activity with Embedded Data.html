@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Matching Activity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .column {
+            width: 48%;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+        }
+        
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .card.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .card.correct {
+            background-color: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            cursor: default;
+        }
+        
+        .card.incorrect {
+            background-color: #ffebee;
+            border: 1px solid #ef9a9a;
+            animation: shake 0.5s;
+        }
+        
+        .card.drop-target {
+            background-color: #e3f2fd;
+            border: 1px dashed #90caf9;
+        }
+        
+        .instructions {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Sentence Matching Activity</h1>
+    
+    <div class="instructions">
+        <p><strong>Instructions:</strong> Drag each sentence part from the left column and drop it on the matching part in the right column. When all items are matched, you'll see your results.</p>
+    </div>
+    
+    <div class="container">
+        <div class="column" id="leftColumn">
+            <!-- Left column items will be loaded here -->
+        </div>
+        
+        <div class="column" id="rightColumn">
+            <!-- Right column items will be loaded here -->
+        </div>
+    </div>
+    
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Results</h2>
+            <div id="resultContent"></div>
+        </div>
+    </div>
+    
+    <script>
+        //==========================================================
+        // Embedded data structure - EDIT THIS SECTION TO CHANGE THE ACTIVITY CONTENT
+        //==========================================================
+        
+        const activityData = {
+            leftItems: [
+                { id: 'a', text: 'The capital of France is', match: '3' },
+                { id: 'b', text: 'The largest planet in our solar system is', match: '4' },
+                { id: 'c', text: 'The chemical symbol for gold is', match: '1' },
+                { id: 'd', text: 'The process by which plants make food is called', match: '2' }
+            ],
+            rightItems: [
+                { id: '1', text: 'Au', match: 'c' },
+                { id: '2', text: 'photosynthesis', match: 'd' },
+                { id: '3', text: 'Paris', match: 'a' },
+                { id: '4', text: 'Jupiter', match: 'b' }
+            ]
+        };
+        
+        // DOM elements
+        const leftColumn = document.getElementById('leftColumn');
+        const rightColumn = document.getElementById('rightColumn');
+        const modal = document.getElementById('resultModal');
+        const resultContent = document.getElementById('resultContent');
+        const closeBtn = document.querySelector('.close');
+        
+        // State variables
+        let draggedItem = null;
+        let matches = [];
+        
+        // Initialize the activity
+        function initActivity() {
+            leftColumn.innerHTML = '';
+            rightColumn.innerHTML = '';
+            matches = [];
+            
+            // Create left column cards (draggable)
+            activityData.leftItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.id = item.id;
+                card.dataset.match = item.match;
+                card.textContent = `${item.id}. ${item.text}`;
+                card.draggable = true;
+                
+                // Drag events
+                card.addEventListener('dragstart', handleDragStart);
+                card.addEventListener('dragend', handleDragEnd);
+                
+                leftColumn.appendChild(card);
+            });
+            
+            // Create right column cards (drop targets)
+            activityData.rightItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.id = item.id;
+                card.dataset.match = item.match;
+                card.textContent = `${item.id}. ${item.text}`;
+                
+                // Drop events
+                card.addEventListener('dragover', handleDragOver);
+                card.addEventListener('dragenter', handleDragEnter);
+                card.addEventListener('dragleave', handleDragLeave);
+                card.addEventListener('drop', handleDrop);
+                
+                rightColumn.appendChild(card);
+            });
+        }
+        
+        // Drag start handler
+        function handleDragStart(e) {
+            draggedItem = this;
+            this.classList.add('dragging');
+            e.dataTransfer.setData('text/plain', this.dataset.id);
+            e.dataTransfer.effectAllowed = 'move';
+        }
+        
+        // Drag end handler
+        function handleDragEnd() {
+            this.classList.remove('dragging');
+            draggedItem = null;
+            
+            // Remove drop target highlighting from all right cards
+            document.querySelectorAll('#rightColumn .card').forEach(card => {
+                card.classList.remove('drop-target');
+            });
+        }
+        
+        // Drag over handler (right column cards)
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault(); // Necessary to allow dropping
+            }
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+        
+        // Drag enter handler (right column cards)
+        function handleDragEnter(e) {
+            this.classList.add('drop-target');
+        }
+        
+        // Drag leave handler (right column cards)
+        function handleDragLeave() {
+            this.classList.remove('drop-target');
+        }
+        
+        // Drop handler (right column cards)
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation(); // stops the browser from redirecting
+            }
+            
+            this.classList.remove('drop-target');
+            
+            // Get the dragged item
+            const draggedId = e.dataTransfer.getData('text/plain');
+            const draggedCard = document.querySelector(`#leftColumn .card[data-id="${draggedId}"]`);
+            
+            if (!draggedCard) return;
+            
+            // Check if it's a correct match
+            const leftMatch = draggedCard.dataset.match;
+            const rightId = this.dataset.id;
+            
+            if (leftMatch === rightId) {
+                // Correct match
+                draggedCard.classList.add('correct');
+                this.classList.add('correct');
+                
+                // Add to matches array
+                matches.push({
+                    left: draggedId,
+                    right: rightId,
+                    correct: true
+                });
+            } else {
+                // Incorrect match
+                draggedCard.classList.add('incorrect');
+                this.classList.add('incorrect');
+                
+                // Add to matches array
+                matches.push({
+                    left: draggedId,
+                    right: rightId,
+                    correct: false
+                });
+                
+                // Reset after delay
+                setTimeout(() => {
+                    draggedCard.classList.remove('incorrect');
+                    this.classList.remove('incorrect');
+                }, 1000);
+            }
+            
+            // Check if all matches are made
+            checkCompletion();
+            
+            return false;
+        }
+        
+        // Check if all items have been matched
+        function checkCompletion() {
+            const allLeftCards = document.querySelectorAll('#leftColumn .card');
+            const allRightCards = document.querySelectorAll('#rightColumn .card');
+            
+            let allMatched = true;
+            
+            // Check left column
+            allLeftCards.forEach(card => {
+                if (!card.classList.contains('correct')) {
+                    allMatched = false;
+                }
+            });
+            
+            // Check right column
+            allRightCards.forEach(card => {
+                if (!card.classList.contains('correct')) {
+                    allMatched = false;
+                }
+            });
+            
+            if (allMatched) {
+                showResults();
+            }
+        }
+        
+        // Show results modal
+        function showResults() {
+            const correctMatches = matches.filter(match => match.correct).length;
+            const totalMatches = activityData.leftItems.length;
+            const incorrectMatches = totalMatches - correctMatches;
+            
+            let resultHTML = `<p>You got ${correctMatches} out of ${totalMatches} matches correct!</p>`;
+            
+            if (incorrectMatches > 0) {
+                resultHTML += `<p>Please review these pairs:</p><ul>`;
+                
+                matches.forEach(match => {
+                    if (!match.correct) {
+                        const leftItem = activityData.leftItems.find(item => item.id === match.left);
+                        const rightItem = activityData.rightItems.find(item => item.id === match.right);
+                        
+                        resultHTML += `<li>${leftItem.id}. ${leftItem.text} ↔ ${rightItem.id}. ${rightItem.text}</li>`;
+                    }
+                });
+                
+                resultHTML += `</ul>`;
+            } else {
+                resultHTML += `<p>Perfect! All matches are correct.</p>`;
+            }
+            
+            resultContent.innerHTML = resultHTML;
+            modal.style.display = 'block';
+        }
+        
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Initialize the activity when page loads
+        window.addEventListener('DOMContentLoaded', initActivity);
+    </script>
+</body>
+</html>

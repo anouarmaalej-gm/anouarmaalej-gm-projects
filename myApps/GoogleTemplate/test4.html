@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Docs Page with Card-Style Sections</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      color: #333;
+      background-color: #fafafa;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      width: 250px;
+      background-color: #f8f9fa;
+      border-right: 1px solid #dee2e6;
+      padding: 20px;
+      position: fixed; /* Keeps the sidebar fixed on scroll */
+      top: 0;
+      bottom: 0;
+      overflow-y: auto; /* Enable scrolling if content exceeds viewport */
+    }
+
+    .sidebar h2 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px; /* Space between items */
+    }
+
+    /* Card-like menu items with equal height */
+    .sidebar li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 50px; /* Fixed height to ensure uniform size */
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Thin shadow */
+      text-decoration: none;
+      color: #333;
+      transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+    }
+
+    .sidebar li a:hover {
+      background-color: #f0f0f0;
+      border-color: #ccc;
+      transform: translateY(-2px);
+    }
+
+    /* Highlight the active menu link (optional) */
+    .sidebar li a.active {
+      background-color: #e7f1ff;
+      border-color: #b3d4fc;
+    }
+
+    /* Main content container */
+    .content {
+      margin-left: 270px; /* Leave space for the fixed sidebar */
+      padding: 20px;
+      flex: 1;
+      overflow: hidden; /* Hide overflow to prevent partial overlap from showing */
+      position: relative;
+    }
+
+    /* Container holding all section "cards" side-by-side */
+    .sections-container {
+      display: flex;
+      width: calc(100% * 5); /* 5 sections => 500% width */
+      transition: transform 0.5s ease-in-out;
+    }
+
+    /* Individual section card */
+    .section-card {
+      width: 75%;
+      flex-shrink: 0;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 20px;
+      /* Removed margin-right to avoid partial overlap */
+      box-sizing: border-box;
+    }
+
+    /* Section headings */
+    .section-card h1,
+    .section-card h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    /* Code block styling */
+    pre {
+      background-color: #f8f8f8;
+      padding: 10px;
+      overflow: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    code {
+      font-family: Consolas, Monaco, "Courier New", monospace;
+    }
+
+    /* Navigation buttons (NEXT / BACK) */
+    .nav-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .nav-buttons button {
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+    }
+
+    .nav-buttons button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 20px;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+
+      .sections-container {
+        width: 75%; /* Each card is still 100% wide in mobile view */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2>Documentation</h2>
+    <ul>
+      <!-- data-index attributes let us know which card to slide to -->
+      <li><a href="#" data-index="0" class="active">Introduction</a></li>
+      <li><a href="#" data-index="1">Building Env</a></li>
+      <li><a href="#" data-index="2">Creating AVIF</a></li>
+      <li><a href="#" data-index="3">Rendering</a></li>
+      <li><a href="#" data-index="4">Final Steps</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="content">
+    <!-- A container for all the section cards -->
+    <div class="sections-container">
+      
+      <!-- Section 1: Introduction -->
+      <div class="section-card" id="section-introduction">
+        <h1>1. Introduction</h1>
+        <p>
+          Welcome to this tutorial. Below, you’ll find sections describing how to
+          build and create animated AVIF images, along with code examples.
+        </p>
+        <div class="nav-buttons">
+          <!-- No BACK for the first section -->
+          <span></span>
+          <button data-action="next">Next</button>
+        </div>
+      </div>
+
+      <!-- Section 2: Building the Environment -->
+      <div class="section-card" id="section1">
+        <h2>2. Building the Environment</h2>
+        <p>
+          To start, ensure you have the necessary tools installed. You can use
+          <code>ffmpeg</code>, <code>avifenc</code>, or other tools of your choice.
+        </p>
+        <pre><code>
+# Example command to install dependencies:
+sudo apt-get update
+sudo apt-get install ffmpeg libavif-tools
+        </code></pre>
+        <div class="nav-buttons">
+          <button data-action="back">Back</button>
+          <button data-action="next">Next</button>
+        </div>
+      </div>
+
+      <!-- Section 3: Creating the Animated AVIF -->
+      <div class="section-card" id="section2">
+        <h2>3. Creating the Animated AVIF</h2>
+        <p>
+          Use <code>avifenc</code> or <code>ffmpeg</code> to compress images into an
+          animated AVIF. The commands might look like this:
+        </p>
+        <pre><code>
+# Using ffmpeg
+ffmpeg -i input_%02d.png -c:v libaom-av1 -pix_fmt yuv420p10le output.avif
+        </code></pre>
+        <div class="nav-buttons">
+          <button data-action="back">Back</button>
+          <button data-action="next">Next</button>
+        </div>
+      </div>
+
+      <!-- Section 4: Rendering the Page -->
+      <div class="section-card" id="section3">
+        <h2>4. Rendering the Page</h2>
+        <p>
+          To display your animated AVIF in a webpage, simply use the
+          <code>&lt;img&gt;</code> tag or consider a
+          <code>&lt;picture&gt;</code> tag for broader support:
+        </p>
+        <pre><code>
+&lt;picture&gt;
+  &lt;source srcset="animation.avif" type="image/avif" /&gt;
+  &lt;img src="fallback.png" alt="Animated example" /&gt;
+&lt;/picture&gt;
+        </code></pre>
+        <div class="nav-buttons">
+          <button data-action="back">Back</button>
+          <button data-action="next">Next</button>
+        </div>
+      </div>
+
+      <!-- Section 5: Final Steps -->
+      <div class="section-card" id="section4">
+        <h2>5. Final Steps</h2>
+        <p>
+          Once you have your page ready, upload it to a server or open it locally in
+          your browser to test. Make sure your browser supports AVIF to see the
+          animation.
+        </p>
+        <div class="nav-buttons">
+          <button data-action="back">Back</button>
+          <!-- No NEXT for the last section -->
+          <span></span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- JavaScript for slide transitions and menu highlighting -->
+  <script>
+    // Store references to the sections
+    const sections = [
+      "section-introduction",
+      "section1",
+      "section2",
+      "section3",
+      "section4"
+    ];
+
+    let currentIndex = 0;
+
+    // Grab elements
+    const sectionsContainer = document.querySelector(".sections-container");
+    const menuLinks = document.querySelectorAll(".sidebar li a");
+    const navButtons = document.querySelectorAll(".nav-buttons button");
+
+    // Navigate to a specific index (0-based)
+    function navigateToIndex(index) {
+      if (index < 0 || index >= sections.length) return;
+      currentIndex = index;
+      // Slide the container
+      sectionsContainer.style.transform = `translateX(-${index * 100}%)`;
+      // Update active link
+      updateActiveLink(index);
+    }
+
+    // Update which menu link is active
+    function updateActiveLink(index) {
+      menuLinks.forEach((link) => link.classList.remove("active"));
+      if (menuLinks[index]) {
+        menuLinks[index].classList.add("active");
+      }
+    }
+
+    // Set up event listeners on sidebar links
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const index = parseInt(link.getAttribute("data-index"), 10);
+        navigateToIndex(index);
+      });
+    });
+
+    // Set up event listeners on NEXT and BACK buttons
+    navButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const action = btn.getAttribute("data-action");
+        if (action === "next") {
+          navigateToIndex(currentIndex + 1);
+        } else if (action === "back") {
+          navigateToIndex(currentIndex - 1);
+        }
+      });
+    });
+
+    // Initialize (start at first section)
+    navigateToIndex(0);
+  </script>
+</body>
+</html>

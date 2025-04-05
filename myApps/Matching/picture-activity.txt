@@ -1,0 +1,11 @@
+left: a | The woman | 3
+left: b | The dog | 4
+left: c | The children | 1
+left: d | The man | 2
+left: e | The bird | 5
+
+right: 1 | are sitting at a table. | c
+right: 2 | is reading a newspaper. | d
+right: 3 | is holding an ice cream. | a
+right: 4 | is sleeping. | b
+right: 5 | is flying. | e
