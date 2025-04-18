@@ -1,0 +1,2 @@
+Call the page like this:
+http://127.0.0.1:5500/myApps/Matching/drag-n-drop-automated.html?xml=activity1.xml

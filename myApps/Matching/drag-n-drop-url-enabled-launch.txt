@@ -1,0 +1,4 @@
+drag-n-drop-url-enabled.html?xml=activity1.xml
+
+OR
+drag-n-drop-url-enabled.html?txt=activity1.txt
