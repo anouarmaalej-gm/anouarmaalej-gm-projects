@@ -1,0 +1,113 @@
+/* ----------------------------------------------------------------
+	My CSS
+-----------------------------------------------------------------*/
+html {
+    scroll-behavior: smooth;
+    /* Enables smooth scrolling */
+}
+
+/* I replaced the .body tag in the file style.css with this one*/
+body {
+    font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    color: #333;
+    line-height: 1.5;
+    margin-top: 50px;
+}
+
+.my-container-new {
+    display: flex;
+    height: 100vh;
+    /* Full height of the viewport */
+}
+
+/* ============================================================*/
+/* I added this from the old file*/
+.sidebar {
+    width: 250px; /* Fixed width for the sidebar */
+    background-color: #efefef;
+    color: white;
+    padding: 20px;
+    position: fixed;  /* Keep sidebar fixed */
+    height: 100%;  /* Full height */
+}
+.sidebar-item {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar-item:last-child {
+    border-bottom: none;
+}
+
+.sidebar-date {
+    font-weight: 500;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.sidebar-link {
+    color: #244d76;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    transition: color 0.2s;
+}
+
+.sidebar-link:hover {
+    color: #004499;
+}
+
+
+.main-content-me {
+    /*flex: 1;*/
+    padding: 30px 40px;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+
+    h1 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: 25px;
+        color: #222;
+    }
+
+    .tool {
+        margin-bottom: 22px;
+        padding: 50px 20px;
+        /* Add padding to sections */
+        margin-top: 50px;
+        /* Adjust this value as needed */
+    }
+
+    .tool-title {
+        font-weight: 500;
+        margin-bottom: 6px;
+        font-size: 15px;
+    }
+
+    .tool p {
+        margin: 0;
+        font-size: 14px;
+        color: #444;
+    }
+
+    
+
+    strong {
+        font-weight: 500;
+    }
+
+    sub {
+        font-size: 0.75em;
+        vertical-align: sub;
+    }

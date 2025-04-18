@@ -1,0 +1,50 @@
+    .mytable {
+      border-collapse: collapse;
+          
+      margin-right: .3em;
+      margin-left: 10px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      width: 98%;
+    }
+
+    .mytable th,
+    .mytable td {
+      border: 0.5px solid #ccc;
+      padding: .3em;
+      margin: 0;
+      text-align: left;
+      vertical-align: top /* Aligns cell content to the TOP*/
+    }
+
+    .mytable th {
+      background: #eeeeee;
+      text-align: center; /* , and end it with */ 
+    }
+
+    .mytable tr:nth-child(odd) {
+      background: #eeeeee;
+
+    }
+
+    .myDiv {
+      border: 0.25px outset red;
+      background-color: white;
+      text-align: center;
+
+      position: static;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+
+    .form-group {
+      border: 1px outset green;
+      background-color: white;
+      text-align: left;
+      padding: .6em;
+      position: static;
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }

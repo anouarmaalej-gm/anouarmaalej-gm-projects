@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>What is Joplin? - Complete Page</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    /* Header / Top Navigation */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f8f8f8;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0070f3;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    nav ul li a:hover {
+      background-color: #ddd;
+    }
+
+    .language-selector {
+      margin-left: 1rem;
+    }
+
+    /* Layout Container for Sidebar and Main Content */
+    .layout-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 250px;
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-right: 2rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar li {
+      margin-bottom: 0.2rem; /* Smaller distance between items */
+    }
+
+    .sidebar li a {
+      text-decoration: none;
+      color: #555;
+      display: block;
+      padding: 0.4rem 0.6rem; /* Tighter padding */
+      border-radius: 4px;
+      transition: background-color 0.2s ease-in-out;
+      position: relative;
+    }
+
+    .sidebar li a:hover {
+      background-color: #ddd;
+    }
+
+    /* Submenu styling */
+    .submenu {
+      display: none !important;
+      margin-left: 1rem; /* Indent submenu items */
+      border-left: 2px solid #eee;
+      padding-left: 0.6rem;
+    }
+
+    /* Triangle icon styling */
+    .triangle {
+      float: right;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .has-submenu.open .submenu {
+      display: block !important;
+    }
+
+    .has-submenu.open .triangle {
+      transform: rotate(90deg);
+    }
+
+    /* Main Content Styling */
+    .main-content {
+      flex: 1;
+    }
+
+    .content-header h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-header p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .content-body {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .content-text {
+      flex: 1 1 300px;
+    }
+
+    .content-text p {
+      margin-bottom: 1rem;
+    }
+
+    .content-image {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .content-image img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+
+    /* Footer Styling */
+    footer {
+      text-align: center;
+      padding: 1rem 2rem;
+      background-color: #f8f8f8;
+      border-top: 1px solid #ddd;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      color: #777;
+    }
+
+    ol {
+        list-style-position: inside;
+        margin-left: 2rem; /* Indent submenu items */
+        
+    }
+    ol li {
+        list-style-type: none;
+        padding-top: .1rem;
+        padding-bottom: .1rem;
+        }
+
+    ol ol {
+        counter-reset: item;
+        padding-inline-start: 35px;
+        
+        }
+    ol ol li {
+        list-style-type: none;
+        padding-bottom: 2rem;
+        }
+    ol ol li::before {
+        content: counters(item, '', upper-latin)'.';
+        counter-increment: item;
+        display: inline-block;
+        text-indent: -25px;
+        }
+
+    </style>
+</head>
+<body>
+
+  <!-- Header / Top Navigation -->
+  <header>
+    <a href="#" class="logo">Joplin</a>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Joplin Cloud</a></li>
+        <li><a href="#">Support</a></li>
+        <li class="language-selector"><a href="#">English ▼</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Layout: Sidebar and Content -->
+  
+  <div class="layout-container">
+    
+    
+    <!-- Sidebar with Collapsible Submenus -->
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#overview">Introduction</a></li>
+        <li><a href="#principles">Principles of a speed reading programme</a></li>
+        <li class="has-submenu">
+          <a href="#">
+            Features
+            <span class="triangle">▶</span>
+          </a>
+          <ul class="submenu">
+            <li><a href="#markdown-support">Markdown Support</a></li>
+            <li><a href="#offline-sync">Offline Sync</a></li>
+            <li><a href="#multiple-platforms">Multiple Platforms</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="#">
+            Installation
+            <span class="triangle">▶</span>
+          </a>
+          <ul class="submenu">
+            <li><a href="#windows-installation">Windows</a></li>
+            <li><a href="#macos-installation">macOS</a></li>
+            <li><a href="#linux-installation">Linux</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="#">
+            FAQ
+            <span class="triangle">▶</span>
+          </a>
+          <ul class="submenu">
+            <li><a href="#faq-general">General FAQ</a></li>
+            <li><a href="#faq-sync">Sync FAQ</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+
+   
+    <!-- Main Content Area -->
+    <section class="main-content">
+      <div class="content-header">
+        <h1 id="overview">Introduction</h1>
+        <p>
+            New Zealand Speed Readings for ESL Learners 1000 was written at the School of
+            Linguistics and Applied Language Studies at Victoria University of Wellington, New Zealand. The programme contains twenty 400 word readings, each with ten comprehension questions. The passages are written within Paul Nation’s 1000 Vocabulary Lists (1996). Exceptions are words that are explained in the text, titles of passages, content words like country names and animal names, and some common words like television, cell phone and internet.
+        </p>
+        <h1 id="principles">Principles of a speed reading programme</h1>
+            <p>
+                A speed reading programme should isolate the skill that is being practised which is increasing the speed of a student’s reading. It is important not to confuse the purpose of the exercise with increasing vocabulary, improving reading comprehension or anything else. A speed reading programme is only a small part of an overall reading programme and while success with the programme may lead to benefits such as increasing confidence and the effectiveness and enjoyment of reading, the focus is speed.
+                <ol start="1">
+                    <li>The focus is speed. While reading without understanding would be pointless, the goal of speed reading is not to achieve perfect accuracy in answering the questions. If students are getting all the answers right, they are reading too slowly. The goal is the fastest time with about 70 percent accuracy.</li>
+                    <li>The readings should be easy. There should be very little unknown vocabulary and the grammar should be straightforward. There should be nothing to stop the readers in their tracks. Similarly the questions should test general understanding rather than detailed knowledge. Questions about specific details slow down reading.</li>
+                    <li>The method of reading is important. Students should not use their fingers or pens to trace the words as this encourages slow word-by-word reading. By reading quickly, students are training their eyes to process meaning chunks.</li> 
+                    <li>Gaining confidence is an important aspect of the programme. A lot of learning is getting past the ‘I can’t do it’ barrier. A speed reading programme can push the student through this barrier. Teachers can help by setting individual and class goals and time limits. Success in speed reading engenders confidence, and confidence leads to enjoyment, motivation and more success. The virtuous circle. (Nuttall, 1996).</li>
+                    <li>A speed reading programme should be intensive. Complete the twenty readings by doing them every day for four weeks.</li>
+                    <li>Speed reading should be an isolated activity. Don’t plan a follow up activity with the readings. When students realise they will be doing a follow-up activity, they will concentrate on comprehension and slow down.</li>
+                    <li>Recording the time and score is important as seeing daily progress is a very effective motivator for students. It is also a good way for the teacher to monitor progress, give feedback and encouragement, and set individual and class goals.</li>
+                </ol>
+            </p>
+          <h2 id="markdown-support">Markdown Support</h2>
+          <p>
+            Joplin uses Markdown for note editing, making formatting and note-taking straightforward and flexible.
+          </p>
+          <h2 id="offline-sync">Offline Sync</h2>
+          <p>
+            Sync your notes across multiple devices and platforms, even when offline.
+          </p>
+          <h2 id="multiple-platforms">Multiple Platforms</h2>
+          <p>
+            Available for Windows, macOS, Linux, iOS, and Android, ensuring a consistent experience across devices.
+          </p>
+          <h2 id="windows-installation">Installation on Windows</h2>
+          <p>
+            Download and run the installer to get started quickly on Windows.
+          </p>
+          <h2 id="macos-installation">Installation on macOS</h2>
+          <p>
+            Simply drag and drop the application into your Applications folder.
+          </p>
+          <h2 id="linux-installation">Installation on Linux</h2>
+          <p>
+            Use the AppImage or your distro's package manager to install Joplin.
+          </p>
+          <h2 id="faq-general">General FAQ</h2>
+          <p>
+            Common questions about Joplin are addressed here.
+          </p>
+          <h2 id="faq-sync">Sync FAQ</h2>
+          <p>
+            Learn how to troubleshoot and set up note synchronization.
+          </p>
+      </div>
+
+
+      </div>
+
+      <div class="content-body">
+        <div class="content-text">
+            
+        </div>
+        <div class="content-image">
+          <img src="https://via.placeholder.com/400x250" alt="Joplin Screenshot">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Joplin. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Collapsible Submenus -->
+  <script>
+    // Toggle the 'open' class on parent items to show/hide submenus.
+    document.querySelectorAll('.has-submenu > a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

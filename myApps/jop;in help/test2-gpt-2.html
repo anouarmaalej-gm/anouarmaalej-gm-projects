@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>What is Joplin? - Mimic Page with Vertical Sidebar</title>
+<!--   <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    /* Header / Top Navigation */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f8f8f8;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0070f3;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 0.5rem 1rem;
+      
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    nav ul li a:hover {
+      background-color: #ddd;
+    }
+
+    .language-selector {
+      margin-left: 1rem;
+    }
+
+    /* Layout Container for Sidebar and Main Content */
+    .layout-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 350px;
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-right: 2rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 0.1rem;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+      padding: 0.4rem 0.6rem;
+      
+      border-radius: 4px;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #ddd;
+    }
+
+    /* Submenu styling */
+    .sidebar ul li ul {
+      margin-top: 0.1rem;
+      margin-left: 1rem; /* indent nested list */
+      border-left: 2px solid #eee;
+      padding-left: 1rem;
+    }
+
+    /* anouar: added */
+    .has-submenu.open .submenu {
+  display: block;
+}
+.has-submenu.open .triangle {
+  transform: rotate(90deg);
+}
+.triangle {
+  float: right;
+  transition: transform 0.2s;
+}
+
+
+
+    /* Main Content Styling */
+    .main-content {
+      flex: 1;
+    }
+
+    .content-header h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-header p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .content-body {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .content-text {
+      flex: 1 1 300px;
+    }
+
+    .content-text p {
+      margin-bottom: 1rem;
+    }
+
+    .content-image {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .content-image img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+
+    /* Footer Styling */
+    footer {
+      text-align: center;
+      padding: 1rem 2rem;
+      background-color: #f8f8f8;
+      border-top: 1px solid #ddd;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      color: #777;
+    }
+  </style> -->
+
+  <style>
+    /* Basic reset and sidebar container */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: 1rem;
+    }
+
+    /* Main list style */
+    .sidebar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      /* Ensure items stack vertically */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top-level items */
+    .sidebar li {
+      margin-bottom: 0.2rem; /* Decrease spacing between items */
+    }
+
+    .sidebar li a {
+      text-decoration: none;
+      color: #555;
+      display: block;
+      padding: 0.4rem 0.6rem; /* Smaller padding for tighter spacing */
+      border-radius: 4px;
+      transition: background-color 0.2s ease-in-out;
+      position: relative; /* Needed for triangle positioning */
+    }
+
+    .sidebar li a:hover {
+      background-color: #ddd;
+    }
+
+    /* Submenu styling: hidden by default */
+    .submenu {
+      display: none;
+      margin-left: 1rem; /* Indent submenu items */
+      border-left: 2px solid #eee;
+      padding-left: 0.6rem;
+    }
+
+    /* Triangle icon to the right of the parent menu item */
+    .triangle {
+      float: right;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    /* When the parent <li> has 'open', show submenu and rotate triangle */
+    .has-submenu.open .submenu {
+      display: block;
+    }
+
+    .has-submenu.open .triangle {
+      transform: rotate(90deg); /* Rotate triangle to indicate expansion */
+    }
+  </style>
+  
+</head>
+<body>
+<!-- Sidebar -->
+<aside class="sidebar">
+    <ul>
+      <li><a href="#">Overview</a></li>
+
+      <!-- Parent menu item with submenu -->
+      <li class="has-submenu">
+        <a href="#">
+          Using Joplin
+          <span class="triangle">▶</span> <!-- Triangular icon -->
+        </a>
+        <ul class="submenu">
+          <li><a href="#">Technical Specifications</a></li>
+          <li><a href="#">Advanced Usage</a></li>
+        </ul>
+      </li>
+
+      <li class="has-submenu">
+        <a href="#">
+          Programmatic API
+          <span class="triangle">▶</span>
+        </a>
+        <ul class="submenu">
+          <li><a href="#">API Docs</a></li>
+          <li><a href="#">Examples</a></li>
+        </ul>
+      </li>
+
+      <li class="has-submenu">
+        <a href="#">
+          Development
+          <span class="triangle">▶</span>
+        </a>
+        <ul class="submenu">
+          <li><a href="#">Contributing Guide</a></li>
+          <li><a href="#">Building from Source</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#">Google Summer of Code</a></li>
+    </ul>
+  </aside>
+  <!-- Header / Top Navigation -->
+<!--   <header>
+    <a href="#" class="logo">Joplin</a>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Joplin Cloud</a></li>
+        <li><a href="#">Support</a></li>
+        <li class="language-selector"><a href="#">English ▼</a></li>
+      </ul>
+    </nav>
+  </header> -->
+
+  <!-- Main Layout: Sidebar and Content -->
+ <!-- <div class="layout-container"> -->
+    <!-- Sidebar Navigation (Vertical) -->
+    <!-- <aside class="sidebar">
+      <nav>
+        
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li>
+            <a href="#features">Features</a>
+            <ul>
+              <li><a href="#markdown-support">Markdown Support</a></li>
+              <li><a href="#offline-sync">Offline Sync</a></li>
+              <li><a href="#multiple-platforms">Multiple Platforms</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#installation">Installation</a>
+            <ul>
+              <li><a href="#windows-installation">Windows</a></li>
+              <li><a href="#macos-installation">macOS</a></li>
+              <li><a href="#linux-installation">Linux</a></li>
+            </ul>
+          </li>
+          <li><a href="#tutorial">Tutorial</a></li>
+          <li>
+            <a href="#faq">FAQ</a>
+            <ul>
+              <li><a href="#faq-general">General FAQ</a></li>
+              <li><a href="#faq-sync">Sync FAQ</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside> -->
+
+    <!-- Main Content Area -->
+    <section class="main-content">
+      <div class="content-header">
+        <h1 id="overview">What is Joplin?</h1>
+        <p>
+          Joplin is a free, open source note-taking and to-do application, which can handle a large
+          number of notes organized into notebooks. The notes are searchable, can be copied, tagged,
+          and modified either from the applications directly or from your own text editor.
+        </p>
+      </div>
+
+      <div class="content-body">
+        <div class="content-text">
+          <h2 id="features">Features</h2>
+          <p>
+            Joplin offers offline-first, markdown-based note-taking, ensuring you can read your notes
+            on your phone or computer anytime. It can sync via multiple services like Nextcloud,
+            Dropbox, and more.
+          </p>
+
+          <h3 id="markdown-support">Markdown Support</h3>
+          <p>
+            Joplin uses Markdown for note editing, allowing for quick formatting and easy
+            readability.
+          </p>
+
+          <h3 id="offline-sync">Offline Sync</h3>
+          <p>
+            Sync your notes across devices, and keep them available even without an internet
+            connection.
+          </p>
+
+          <h3 id="multiple-platforms">Multiple Platforms</h3>
+          <p>
+            Joplin runs on Windows, macOS, Linux, iOS, Android, and even offers a Web Clipper for
+            browsers.
+          </p>
+
+          <h2 id="installation">Installation</h2>
+          <h3 id="windows-installation">Windows</h3>
+          <p>
+            Download the installer from the official website and follow on-screen instructions.
+          </p>
+          <h3 id="macos-installation">macOS</h3>
+          <p>
+            Use the provided DMG file to drag and drop Joplin into your Applications folder.
+          </p>
+          <h3 id="linux-installation">Linux</h3>
+          <p>
+            Use the AppImage, or install from repositories if available for your distro.
+          </p>
+
+          <h2 id="tutorial">Tutorial</h2>
+          <p>
+            Get started with our comprehensive tutorials to learn how to make the most of Joplin’s
+            capabilities.
+          </p>
+
+          <h2 id="faq">FAQ</h2>
+          <h3 id="faq-general">General FAQ</h3>
+          <p>
+            Find answers to the most commonly asked questions about Joplin’s features and usage.
+          </p>
+          <h3 id="faq-sync">Sync FAQ</h3>
+          <p>
+            Learn about synchronizing notes across multiple platforms and troubleshooting sync
+            issues.
+          </p>
+        </div>
+
+        <div class="content-image">
+          <img src="https://via.placeholder.com/400x250" alt="Joplin Screenshot" />
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Joplin. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

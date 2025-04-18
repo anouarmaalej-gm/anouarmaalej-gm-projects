@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>What is Joplin? - Mimic Page with Sidebar</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    /* Header / Top Navigation */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f8f8f8;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0070f3;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    nav ul li a:hover {
+      background-color: #ddd;
+    }
+
+    .language-selector {
+      margin-left: 1rem;
+    }
+
+    /* Layout Container for Sidebar and Main Content */
+    .layout-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 250px;
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-right: 2rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 1rem;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #ddd;
+    }
+
+    /* Main Content Styling */
+    .main-content {
+      flex: 1;
+    }
+
+    .content-header h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-header p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .content-body {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .content-text {
+      flex: 1 1 300px;
+    }
+
+    .content-text p {
+      margin-bottom: 1rem;
+    }
+
+    .content-image {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .content-image img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+
+    /* Footer Styling */
+    footer {
+      text-align: center;
+      padding: 1rem 2rem;
+      background-color: #f8f8f8;
+      border-top: 1px solid #ddd;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Top Navigation -->
+  <header>
+    <a href="#" class="logo">Joplin</a>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Joplin Cloud</a></li>
+        <li><a href="#">Support</a></li>
+        <li class="language-selector"><a href="#">English ▼</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Layout: Sidebar and Content -->
+  <div class="layout-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#tutorial">Tutorial</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <section class="main-content">
+      <div class="content-header">
+        <h1 id="overview">What is Joplin?</h1>
+        <p>
+          Joplin is a free, open source note-taking and to-do application, which can handle a large
+          number of notes organized into notebooks. The notes are searchable, can be copied, tagged,
+          and modified either from the applications directly or from your own text editor.
+        </p>
+      </div>
+
+      <div class="content-body">
+        <div class="content-text">
+          <h2 id="features">Features</h2>
+          <p>
+            Joplin offers offline-first, markdown-based note-taking, ensuring you can read your notes
+            on your phone or computer anytime. It can sync via multiple services like Nextcloud,
+            Dropbox, and more.
+          </p>
+          <h2 id="installation">Installation</h2>
+          <p>
+            The application is available for Windows, macOS, Linux, iOS, and Android, as well as a
+            Web Clipper for popular browsers.
+          </p>
+          <h2 id="tutorial">Tutorial</h2>
+          <p>
+            Get started with our comprehensive tutorials to learn how to make the most of Joplin’s
+            capabilities.
+          </p>
+          <h2 id="faq">FAQ</h2>
+          <p>
+            Find answers to the most frequently asked questions to resolve common issues.
+          </p>
+        </div>
+        <div class="content-image">
+          <img src="https://via.placeholder.com/400x250" alt="Joplin Screenshot" />
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Joplin. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
